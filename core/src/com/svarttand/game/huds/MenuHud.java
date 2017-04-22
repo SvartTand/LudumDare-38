@@ -44,6 +44,8 @@ public class MenuHud {
 		stage = new Stage(viewport);
 		buttonHeight = textures.getTextureRegion("BigButton").getRegionHeight();
 		buttonWidth = textures.getTextureRegion("BigButton").getRegionWidth();
+		playLabel = new Label("PLAY", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        playLabel.setPosition(Application.V_WIDTH*0.5f - playLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.15f - buttonHeight*0.3f);
 		Button button = new ImageButton(new TextureRegionDrawable(textures.getTextureRegion("BigButton")));
         button.setPosition(Application.V_WIDTH*0.5f - buttonWidth*0.5f, Application.V_HEIGHT*0.15f - buttonHeight*0.5f);
         button.addListener( new ClickListener() {              
@@ -52,8 +54,7 @@ public class MenuHud {
                 isPressed = 1;
             };
         });
-        playLabel = new Label("PLAY", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        playLabel.setPosition(Application.V_WIDTH*0.5f - playLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.15f - buttonHeight*0.3f);
+        
         stage.addActor(button);
         stage.addActor(playLabel);
         Gdx.input.setInputProcessor(stage);

@@ -13,7 +13,9 @@ import com.svarttand.game.constants.Constants;
 import com.svarttand.game.huds.PlayHud;
 import com.svarttand.game.misc.InvaderSpawner;
 import com.svarttand.game.misc.Textures;
+import com.svarttand.game.misc.Weapons;
 import com.svarttand.game.sprites.Dome;
+import com.svarttand.game.sprites.Granade;
 import com.svarttand.game.sprites.Weapon;
 import com.svarttand.game.sprites.World;
 
@@ -26,8 +28,10 @@ public class PlayState extends State{
 	private PlayHud hud;
 	
 	private boolean canChange;
-	private ArrayList<Weapon> weapons;
+	private ArrayList<Weapons> weapons;
 	private InvaderSpawner invaders;
+	
+	private float cooldown;
 
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
@@ -38,7 +42,7 @@ public class PlayState extends State{
 		hud = new PlayHud(cam);
 		hud.initialize(textures);
 		canChange = true;
-		weapons = new ArrayList<Weapon>();
+		weapons = new ArrayList<Weapons>();
 		invaders = new InvaderSpawner();
 		
 	}
@@ -46,17 +50,22 @@ public class PlayState extends State{
 	@Override
 	protected void handleInput(float delta) {
 		
-		if (Gdx.input.isTouched()) {
+		if (Gdx.input.isTouched() && mouse.y >= 100) {
 			
 			if (hud.getCurrentPressed() == Constants.BOMB && canChange) {
 				
-				Weapon weapon = new Weapon(weapons, invaders,dome, textures);
+				Weapon weapon = new Weapon(weapons, invaders, dome, textures);
 				weapons.add(weapon);
+				cooldown = weapon.getCooldown();
+				canChange = false;
+			}else if (hud.getCurrentPressed() == Constants.GRANADE && canChange) {
+				Granade granade = new Granade(weapons, invaders, dome, textures);
+				cooldown = granade.getCooldown();
+				weapons.add(granade);
 				canChange = false;
 			}
 		}else if (weapons.size() > 0 && weapons.get(weapons.size()-1) != null) {
 			weapons.get(weapons.size()-1).release();
-			canChange = true;
 			
 		}		
 		
@@ -70,6 +79,15 @@ public class PlayState extends State{
 		mouse.set(((float)Gdx.input.getX()/Gdx.graphics.getWidth())* Application.V_WIDTH,Application.V_HEIGHT - ((float)Gdx.input.getY()/Gdx.graphics.getHeight())*Application.V_HEIGHT);
 		world.update(delta);
 		dome.update(delta);
+		if (world.getHitPoints()<= 0) {
+			gsm.set(new MenuState(gsm));
+		}
+		
+		cooldown -= delta;
+		if (cooldown <= 0) {
+			canChange = true;
+		}
+		
 		for (int i = 0; i < weapons.size(); i++) {
 			weapons.get(i).update(mouse.x, mouse.y, delta);
 		}

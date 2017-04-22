@@ -9,7 +9,7 @@ public class Textures {
 	
 	
 	public Textures(){
-		atlas = new TextureAtlas("DestroyTheDome.pack");
+		atlas = new TextureAtlas("DistroyTheDome.pack");
 	}
 	
 	public TextureRegion getTextureRegion(String name){

@@ -98,8 +98,6 @@ public class Invader implements Disposable{
 	public void hit(int dmg, float forceX, float forceY){
 		velocity.set(forceX, forceY);
 		hitpoints -= dmg;
-		System.out.println(hitpoints + "/" + 20);
-		System.out.println(forceX + ", " + forceY);
 	}
 	
 	public TextureRegion getTexture(){

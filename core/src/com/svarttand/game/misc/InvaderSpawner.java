@@ -5,7 +5,6 @@ import java.util.Random;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.Rectangle;
 import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.sprites.Invader;
@@ -54,7 +53,6 @@ public class InvaderSpawner {
 	public void explosion(Circle blast, int dmg, float force){
 		for (int i = 0; i < invaders.size(); i++) {
 			if (blast.overlaps(invaders.get(i).getBounds())) {
-				System.out.println("HITS");
 				float distanceX = Math.abs((blast.x + blast.radius) - (invaders.get(i).getBounds().x + invaders.get(i).getBounds().radius));
 				float distanceY = Math.abs((blast.y+ blast.radius) - (invaders.get(i).getBounds().y + invaders.get(i).getBounds().radius));		
 				invaders.get(i).hit(dmg, distanceX*force, distanceY*force);

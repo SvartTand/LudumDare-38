@@ -39,7 +39,6 @@ public class World{
 	
 	public void takeDmg(int dmg){
 		hitPoints -= dmg;
-		System.out.println(MAX_HP + "/" + hitPoints);
 	}
 	
 	public float getHitPoints() {

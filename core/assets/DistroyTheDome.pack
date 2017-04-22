@@ -1,5 +1,5 @@
 
-DestroyTheDome.png
+DistroyTheDome.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -59,11 +59,46 @@ Button
   orig: 32, 32
   offset: 0, 0
   index: -1
-MobPlaceholder
+Button1
   rotate: false
   xy: 605, 587
   size: 32, 32
   orig: 32, 32
+  offset: 0, 0
+  index: -1
+Button1Pressed
+  rotate: false
+  xy: 805, 955
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Button2
+  rotate: false
+  xy: 935, 989
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Button2Pressed
+  rotate: false
+  xy: 203, 151
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+MobPlaceholder
+  rotate: false
+  xy: 237, 185
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Bomb
+  rotate: false
+  xy: 403, 363
+  size: 24, 20
+  orig: 24, 20
   offset: 0, 0
   index: -1
 SnailMob1
@@ -75,64 +110,71 @@ SnailMob1
   index: -1
 SnailMob2
   rotate: false
-  xy: 805, 973
+  xy: 437, 403
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob3
   rotate: false
-  xy: 935, 1007
+  xy: 605, 571
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob4
   rotate: false
-  xy: 203, 169
+  xy: 639, 605
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob5
   rotate: false
-  xy: 237, 203
+  xy: 805, 939
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR1
   rotate: false
-  xy: 403, 369
+  xy: 839, 973
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR2
   rotate: false
-  xy: 437, 403
+  xy: 969, 1007
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR3
   rotate: false
-  xy: 605, 571
+  xy: 203, 135
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR4
   rotate: false
-  xy: 639, 605
+  xy: 237, 169
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR5
   rotate: false
-  xy: 21, 1
+  xy: 271, 203
   size: 18, 14
   orig: 18, 14
+  offset: 0, 0
+  index: -1
+Granade
+  rotate: false
+  xy: 403, 351
+  size: 8, 10
+  orig: 8, 10
   offset: 0, 0
   index: -1
