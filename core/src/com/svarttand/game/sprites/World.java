@@ -1,44 +1,41 @@
 package com.svarttand.game.sprites;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.utils.Disposable;
-import com.svarttand.game.Application;
 
-public class World implements Disposable{
+import com.badlogic.gdx.math.Circle;
+import com.svarttand.game.Application;
+import com.svarttand.game.misc.Textures;
+
+public class World{
 	
 	private static final int MAX_HP = 1000; 
-	private Texture image;
+	private String imageName;
 	private float hitPoints;
 	private Circle bounds;
 	
-	public World(){
-		image = new Texture("CityPlaceholder.png");
+	private float width;
+	private float height;
+	
+	public World(Textures textures){
+		imageName = "City1";
 		hitPoints = MAX_HP;
-		bounds = new Circle((float) (Application.V_WIDTH*0.5 - image.getWidth()*0.5), 0, image.getHeight());
+		width = textures.getTextureRegion(imageName).getRegionWidth();
+		height = textures.getTextureRegion(imageName).getRegionHeight();
+		bounds = new Circle((float) (Application.V_WIDTH*0.5 - width*0.5), 0, height);
 	}
 	
 	public void update(float delta){
 		
 	}
 	
-	public void render(SpriteBatch batch){
-		batch.draw(image, (float) (Application.V_WIDTH*0.5 - image.getWidth()*0.5), 0);
-	}
 	
-	public Texture getTexture(){
-		return image;
+	public String getTextureName(){
+		return imageName;
 	}
 	
 	public Circle getBounds() {
 		return bounds;
 	}
-	@Override
-	public void dispose() {
-		image.dispose();
-		
-	}
+
 	
 	public void takeDmg(int dmg){
 		hitPoints -= dmg;
@@ -48,5 +45,9 @@ public class World implements Disposable{
 	public float getHitPoints() {
 		return hitPoints/MAX_HP;
 	}
+	public float getWidth(){
+		return width;
+	}
+
 
 }

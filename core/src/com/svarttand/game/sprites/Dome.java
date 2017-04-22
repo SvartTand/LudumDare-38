@@ -6,23 +6,23 @@ import com.svarttand.game.Application;
 
 public class Dome {
 	
-	private static final int MAX_HP = 10000;
+	private static final int MAX_HP = 5000;
 	
 	private float hitPoints;
-	private Texture texture;
+	private String texture;
 	private Circle bounds;
 	
 	public Dome(){
 		hitPoints = MAX_HP;
-		texture = new Texture("DomePlaceholder.png");
-		bounds = new Circle(Application.V_WIDTH*0.7f, Application.V_HEIGHT*0.7f, Application.V_WIDTH*0.7f);
+		texture = "DomePlaceholder";
+		bounds = new Circle(Application.V_WIDTH*0.5f, Application.V_HEIGHT*0.5f, Application.V_WIDTH*0.4f);
 		
 	}
 	public void update(float delta){
 		
 	}
 	
-	public Texture getTexture(){
+	public String getTexture(){
 		return texture;
 	}
 	
@@ -37,9 +37,6 @@ public class Dome {
 	public float getHitPoints(){
 		return hitPoints/MAX_HP;
 	}
-	public void dispose() {
-		texture.dispose();
-		
-	}
+
 
 }

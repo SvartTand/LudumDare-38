@@ -41,10 +41,10 @@ public class PlayHud {
 	private Label cityHP;
 	private Label domeHP;
 	
-	public PlayHud(){
-		camera = new OrthographicCamera();
-		camera.position.set(Application.V_WIDTH*0.5f, Application.V_HEIGHT*0.5f,0);
-		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT,camera);
+	public PlayHud(Camera camera){
+		this.camera = camera;
+		
+		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT,this.camera);
 		buttonTexture = new Texture("Button.png");
 		buttonList = new ArrayList<Button>();
 		renderer = new ShapeRenderer();
