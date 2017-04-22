@@ -2,7 +2,6 @@ package com.svarttand.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 import com.svarttand.game.Application;
@@ -11,11 +10,13 @@ import com.svarttand.game.constants.Constants;
 public class Invader implements Disposable{
 	
 	private static final float SPEED = 0.5f;
+	private static final int dmg = 20;
 	
 	private Vector2 velocity;
 	private Vector2 position;
 	
 	private Texture texture;
+	
 	
 	private int hitpoints;
 	private Circle bounds;
@@ -38,7 +39,7 @@ public class Invader implements Disposable{
 		
 	}
 	
-	public void update(float delta){
+	public void update(float delta, World world){
 		if (direction) {
 			if (velocity.x >= SPEED) {
 				velocity.x = SPEED;
@@ -53,17 +54,23 @@ public class Invader implements Disposable{
 				velocity.add(-SPEED*delta,0);
 			}
 		}
-		if (position.y <= 100) {
-			position.y = 100;
+		if (position.y <= Application.V_HEIGHT/4) {
+			position.y = Application.V_HEIGHT/4;
 			
 		}else{
 			velocity.y += -Constants.GRAVITY*delta;
 		}
 		
-		if (position.x <= Application.V_WIDTH*0.5) {
+		if (position.x <= Application.V_WIDTH*0.5&& !direction) {
 			direction = true;
-		}else{
+			if (position.y <= Application.V_HEIGHT/4) {
+				world.takeDmg(dmg);
+			}
+		}else if (direction && position.x >= Application.V_WIDTH*0.5) {
 			direction = false;
+			if (position.y <= Application.V_HEIGHT/4) {
+				world.takeDmg(dmg);
+			}
 		}
 		position.add(velocity);
 		

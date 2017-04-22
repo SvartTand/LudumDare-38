@@ -36,6 +36,7 @@ public class PlayHud {
 		buttonTexture = new Texture("Button.png");
 		buttonList = new ArrayList<Button>();
 		
+		
 	}
 	
 	public void initialize(){

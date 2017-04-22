@@ -69,7 +69,7 @@ public class PlayState extends State{
 		for (int i = 0; i < weapons.size(); i++) {
 			weapons.get(i).update(mouse.x, mouse.y, delta);
 		}
-		invaders.update(delta);
+		invaders.update(delta, world);
 		
 	}
 

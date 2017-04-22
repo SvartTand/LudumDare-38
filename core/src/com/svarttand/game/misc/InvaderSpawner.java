@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.sprites.Invader;
+import com.svarttand.game.sprites.World;
 
 public class InvaderSpawner {
 	
@@ -24,7 +25,7 @@ public class InvaderSpawner {
 		counter = Constants.SPAWN_FREQENCY;
 	}
 	
-	public void update(float delta){
+	public void update(float delta, World world){
 		counter -= delta;
 		if (counter <= 0) {
 			boolean direction = random.nextBoolean();
@@ -36,7 +37,7 @@ public class InvaderSpawner {
 			counter = Constants.SPAWN_FREQENCY;
 		}
 		for (int i = 0; i < invaders.size(); i++) {
-			invaders.get(i).update(delta);
+			invaders.get(i).update(delta, world);
 			if (invaders.get(i).getHitpoints() <= 0) {
 				invaders.get(i).dispose();
 				invaders.remove(i);

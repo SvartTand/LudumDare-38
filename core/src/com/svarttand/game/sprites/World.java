@@ -2,17 +2,21 @@ package com.svarttand.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.utils.Disposable;
 import com.svarttand.game.Application;
 
 public class World implements Disposable{
 	
+	private static final int MAX_HP = 1000; 
 	private Texture image;
 	private int hitPoints;
+	private Circle bounds;
 	
 	public World(){
 		image = new Texture("CityPlaceholder.png");
-		hitPoints = 1000;
+		hitPoints = MAX_HP;
+		bounds = new Circle((float) (Application.V_WIDTH*0.5 - image.getWidth()*0.5), 0, image.getHeight());
 	}
 	
 	public void update(float delta){
@@ -26,10 +30,19 @@ public class World implements Disposable{
 	public Texture getTexture(){
 		return image;
 	}
+	
+	public Circle getBounds() {
+		return bounds;
+	}
 	@Override
 	public void dispose() {
 		image.dispose();
 		
+	}
+	
+	public void takeDmg(int dmg){
+		hitPoints -= dmg;
+		System.out.println(MAX_HP + "/" + hitPoints);
 	}
 
 }
