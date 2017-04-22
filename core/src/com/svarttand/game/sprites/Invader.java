@@ -34,10 +34,17 @@ public class Invader implements Disposable{
 			name = "SnailMob";
 			dmg = 20;
 			speed = 0.5f;
+			hitpoints = 20;
+		}else if (type == Constants.GIANT) {
+			name = "SnailMob";
+			dmg = 10;
+			speed = 0.2f;
+			hitpoints = 200;
 		}else{
 			name = "SnailMob";
 			dmg = 20;
 			speed = 0.5f;
+			hitpoints = 20;
 		}
 		
 		
@@ -50,7 +57,6 @@ public class Invader implements Disposable{
 		}
 		animation = new Animation(name, 4, 0.5f, textures, 1);
 		position = new Vector2(posX,posY);
-		hitpoints = 20;
 		bounds = new Circle(position, textures.getTextureRegion(name + 1).getRegionWidth()*0.5f);
 		
 	}

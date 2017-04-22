@@ -3,7 +3,6 @@ package com.svarttand.game.states;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -12,12 +11,14 @@ import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.huds.PlayHud;
 import com.svarttand.game.misc.InvaderSpawner;
-import com.svarttand.game.misc.Textures;
 import com.svarttand.game.misc.Weapons;
 import com.svarttand.game.sprites.Dome;
-import com.svarttand.game.sprites.Granade;
-import com.svarttand.game.sprites.Weapon;
 import com.svarttand.game.sprites.World;
+import com.svarttand.game.sprites.weapons.Granade;
+import com.svarttand.game.sprites.weapons.MysteryBomb;
+import com.svarttand.game.sprites.weapons.Nuke;
+import com.svarttand.game.sprites.weapons.Rock;
+import com.svarttand.game.sprites.weapons.Weapon;
 
 public class PlayState extends State{
 	
@@ -62,6 +63,22 @@ public class PlayState extends State{
 				Granade granade = new Granade(weapons, invaders, dome, textures);
 				cooldown = granade.getCooldown();
 				weapons.add(granade);
+				canChange = false;
+			}else if (hud.getCurrentPressed() == Constants.STONE && canChange) {
+				Rock stone = new Rock(weapons, invaders, dome, textures);
+				cooldown = stone.getCooldown();
+				weapons.add(stone);
+				canChange = false;
+			}else if (hud.getCurrentPressed() == Constants.NUKE && canChange) {
+				Nuke nuke = new Nuke(weapons, invaders, dome, textures);
+				cooldown = nuke.getCooldown();
+				weapons.add(nuke);
+				canChange = false;
+			}
+			else if (hud.getCurrentPressed() == Constants.MYSTERYBOX && canChange) {
+				MysteryBomb box = new MysteryBomb(weapons, invaders, dome, textures);
+				cooldown = box.getCooldown();
+				weapons.add(box);
 				canChange = false;
 			}
 		}else if (weapons.size() > 0 && weapons.get(weapons.size()-1) != null) {

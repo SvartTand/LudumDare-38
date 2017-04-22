@@ -29,9 +29,19 @@ public class InvaderSpawner {
 		if (counter <= 0) {
 			boolean direction = random.nextBoolean();
 			if (direction) {
-				invaders.add(new Invader(direction, -20, 100,textures, Constants.NORMAL_TYPE));
+				if (random.nextBoolean()) {
+					invaders.add(new Invader(direction, -20, 100,textures, Constants.NORMAL_TYPE));
+				}else{
+					invaders.add(new Invader(direction, -20, 100,textures, Constants.GIANT));
+				}
+				
 			}else{
-				invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100,textures, Constants.NORMAL_TYPE));
+				if (random.nextBoolean()) {
+					invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100,textures, Constants.NORMAL_TYPE));
+				}else{
+					invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100,textures, Constants.GIANT));
+				}
+				
 			}
 			counter = Constants.SPAWN_FREQENCY;
 		}

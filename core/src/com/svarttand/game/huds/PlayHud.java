@@ -5,13 +5,9 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -23,7 +19,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
 import com.svarttand.game.Application;
 import com.svarttand.game.misc.Textures;
 
@@ -61,14 +56,14 @@ public class PlayHud {
 	
 	public void initialize(Textures textures){
 		stage = new Stage(viewport);
-		cityHP = new Label(cityHealthWidth + "", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		domeHP = new Label(domeHP + "", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		cityHP = new Label("City HP: " + cityHealthWidth + "", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		domeHP = new Label("Dome HP: " + domeHP + "", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		buttonHeight = textures.getTextureRegion("Button").getRegionHeight();
 		buttonWidth = textures.getTextureRegion("Button").getRegionWidth();
 		for (int i = 0; i < 12; i++) {
 			final int buttonType = i;
 			Button button;
-			if (i == 1 || i == 2) {
+			if (i<=4) {
 				ImageButtonStyle style1 = new ImageButtonStyle(new TextureRegionDrawable(textures.getTextureRegion("Button" + i)), null, null, null, null, null);
 				ImageButtonStyle style2 = new ImageButtonStyle(new TextureRegionDrawable(textures.getTextureRegion("Button" + i + "Pressed")), null, null, null, null, null);
 				buttonStyles.add(style1);
@@ -98,7 +93,7 @@ public class PlayHud {
 	        
 		}
 		cityHP.setPosition(Application.V_WIDTH*0.5f - cityHP.getWidth()*0.5f, buttonHeight + 6);
-		domeHP.setPosition(Application.V_WIDTH*0.5f - cityHP.getWidth()*0.5f, (buttonHeight + 6) * 1.5f);
+		domeHP.setPosition(Application.V_WIDTH*0.5f - domeHP.getWidth()*0.5f, (buttonHeight + 6) * 1.5f);
 		stage.addActor(cityHP);
 		stage.addActor(domeHP);
 		Gdx.input.setInputProcessor(stage);
@@ -115,11 +110,11 @@ public class PlayHud {
 	}
 	
 	public void render(){
-		renderer.setColor(Color.CYAN);
+		renderer.setColor(Color.SKY);
 		renderer.setProjectionMatrix(camera.combined);
 		renderer.begin(ShapeType.Filled);
 		renderer.rect(3, buttonHeight+6, cityHealthWidth, buttonHeight*0.5f);
-		renderer.setColor(Color.RED);
+		renderer.setColor(Color.FIREBRICK);
 		renderer.rect(3, (buttonHeight+6) * 1.5f, domeHealthWidth, buttonHeight*0.5f);
 		renderer.end();
 		
@@ -128,8 +123,8 @@ public class PlayHud {
 	public void update(float cityValue, float domeValue ){
 		cityHealthWidth = (Application.V_WIDTH - 6) * cityValue;
 		domeHealthWidth = (Application.V_WIDTH - 6) * domeValue;
-		cityHP.setText(cityValue*100 + "%");
-		domeHP.setText(domeValue*100 + "%");
+		cityHP.setText("City HP: " +  cityValue*100 + "%");
+		domeHP.setText("Dome HP: " + domeValue*100 + "%");
 	}
 	
 	public int getCurrentPressed(){

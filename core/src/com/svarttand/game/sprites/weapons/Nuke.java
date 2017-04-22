@@ -1,24 +1,23 @@
-package com.svarttand.game.sprites;
+package com.svarttand.game.sprites.weapons;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Disposable;
 import com.svarttand.game.constants.Constants;
+import com.svarttand.game.misc.Audio;
 import com.svarttand.game.misc.InvaderSpawner;
 import com.svarttand.game.misc.Textures;
 import com.svarttand.game.misc.Weapons;
+import com.svarttand.game.sprites.Dome;
 
-
-public class Weapon implements Weapons{
+public class Nuke implements Weapons{
 	
 	private float force;
 	private String textureName;
 	private Vector2 position;
-	private static final int dmg = 15;
-	private static final float COOLDOWN = 1f;
+	private static final int dmg = 100;
+	private static final float COOLDOWN = 5f;
 	private Circle blast;
 	
 	private boolean released;
@@ -30,21 +29,25 @@ public class Weapon implements Weapons{
 	private InvaderSpawner invaders;
 	private Dome dome;
 	
+	private Textures textures;
+	
 	private float width;
 	private float height;
 	
-	public Weapon(ArrayList<Weapons> list, InvaderSpawner invaders, Dome dome, Textures textures){
-		textureName = "Bomb";
+	public Nuke(ArrayList<Weapons> list, InvaderSpawner invaders, Dome dome, Textures textures){
+		textureName = "Nuke";
 		width = textures.getTextureRegion(textureName).getRegionWidth();
 		height = textures.getTextureRegion(textureName).getRegionHeight();
 		position = new Vector2();
-		blast = new Circle(position, 40);
+		blast = new Circle(position, 100);
 		released = false;
 		detonationTime = 3;
 		this.list = list;
 		this.invaders = invaders;
 		this.dome = dome;
-		force = 0.1f;
+		force = 0.2f;
+		this.textures = textures;
+		
 		
 	}
 	@Override
@@ -53,7 +56,7 @@ public class Weapon implements Weapons{
 		if (released) {
 			velocity += Constants.GRAVITY * delta;
 			if (position.y <= 100) {
-				position.y = 100; 
+				detonate(); 
 			}else{
 				position.add(0, 0 - velocity);
 			}
@@ -80,6 +83,7 @@ public class Weapon implements Weapons{
 		if (!blast.overlaps(dome.getBounds())) {
 			dome.takeDamage(dmg);
 		}
+		textures.getSound(Audio.BOMB_EXPLOSION).play();
 		dispose();
 	}
 	@Override
@@ -97,6 +101,7 @@ public class Weapon implements Weapons{
 	@Override
 	public void dispose() {
 		list.remove(this);
+		
 		
 	}
 	public float getCooldown() {
