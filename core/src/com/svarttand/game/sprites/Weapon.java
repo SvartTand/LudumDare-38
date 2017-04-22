@@ -25,8 +25,9 @@ public class Weapon implements Disposable{
 	private ArrayList<Weapon> list;
 	
 	private InvaderSpawner invaders;
+	private Dome dome;
 	
-	public Weapon(ArrayList<Weapon> list, InvaderSpawner invaders){
+	public Weapon(ArrayList<Weapon> list, InvaderSpawner invaders, Dome dome){
 		texture = new Texture("BombPlaceholder.png");
 		position = new Vector2();
 		blast = new Circle(position, 40);
@@ -34,6 +35,7 @@ public class Weapon implements Disposable{
 		detonationTime = 3;
 		this.list = list;
 		this.invaders = invaders;
+		this.dome = dome;
 		force = 0.1f;
 		
 	}
@@ -66,6 +68,9 @@ public class Weapon implements Disposable{
 	
 	public void detonate(){
 		invaders.explosion(blast, dmg, force);
+		if (!blast.overlaps(dome.getBounds())) {
+			dome.takeDamage(dmg);
+		}
 		dispose();
 	}
 	

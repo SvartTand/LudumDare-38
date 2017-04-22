@@ -10,7 +10,7 @@ public class World implements Disposable{
 	
 	private static final int MAX_HP = 1000; 
 	private Texture image;
-	private int hitPoints;
+	private float hitPoints;
 	private Circle bounds;
 	
 	public World(){
@@ -43,6 +43,10 @@ public class World implements Disposable{
 	public void takeDmg(int dmg){
 		hitPoints -= dmg;
 		System.out.println(MAX_HP + "/" + hitPoints);
+	}
+	
+	public float getHitPoints() {
+		return hitPoints/MAX_HP;
 	}
 
 }
