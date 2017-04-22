@@ -1,5 +1,7 @@
 package com.svarttand.game.states;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,9 +19,10 @@ public class PlayState extends State{
 	private Texture background;
 	private World world;
 	private PlayHud hud;
-	private Weapon weapon;
 	
 	private boolean canChange;
+	
+	private ArrayList<Weapon> weapons;
 
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
@@ -29,6 +32,7 @@ public class PlayState extends State{
 		hud = new PlayHud();
 		hud.initialize();
 		canChange = true;
+		weapons = new ArrayList<Weapon>();
 		
 	}
 
@@ -41,13 +45,14 @@ public class PlayState extends State{
 			System.out.println("yo1");
 			if (hud.getCurrentPressed() == Constants.BOMB && canChange) {
 				System.out.println("yo2");
-				weapon = new Weapon();
+				Weapon weapon = new Weapon(weapons);
+				weapons.add(weapon);
 				canChange = false;
 			}
-		}else if (weapon != null) {
-			weapon.detonate();
-			weapon = null;
+		}else if (weapons.size() > 0 && weapons.get(weapons.size()-1) != null) {
+			weapons.get(weapons.size()-1).release();
 			canChange = true;
+			
 		}		
 		
 	}
@@ -59,8 +64,8 @@ public class PlayState extends State{
 		handleInput(delta);
 		mouse.set(((float)Gdx.input.getX()/Gdx.graphics.getWidth())* Application.V_WIDTH,Application.V_HEIGHT - ((float)Gdx.input.getY()/Gdx.graphics.getHeight())*Application.V_HEIGHT);
 		world.update(delta);
-		if (weapon != null) {
-			weapon.update(mouse.x, mouse.y);
+		for (int i = 0; i < weapons.size(); i++) {
+			weapons.get(i).update(mouse.x, mouse.y, delta);
 		}
 		
 	}
@@ -71,11 +76,12 @@ public class PlayState extends State{
 		batch.begin();
 		batch.draw(background, 0,0);
 		batch.draw(world.getTexture(), (float) (Application.V_WIDTH*0.5 - world.getTexture().getWidth()*0.5), Application.V_HEIGHT/4);
-		if (weapon != null) {
-			batch.draw(weapon.getTexture(), weapon.getPosition().x,weapon.getPosition().y);
+		for (int i = 0; i < weapons.size(); i++) {
+			batch.draw(weapons.get(i).getTexture(), weapons.get(i).getPosition().x,weapons.get(i).getPosition().y);
 		}
 		batch.end();
 		hud.stage.draw();
+		
 	}
 
 	@Override
@@ -90,6 +96,9 @@ public class PlayState extends State{
 	public void resize(int width, int height) {
 		viewport.update(width, height);
 		hud.getViewport().update(width, height);
+		for (int i = 0; i < weapons.size(); i++) {
+			weapons.get(i).dispose();
+		}
 		
 	}
 

@@ -2,9 +2,10 @@ package com.svarttand.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Disposable;
 import com.svarttand.game.Application;
 
-public class World {
+public class World implements Disposable{
 	
 	private Texture image;
 	private int hitPoints;
@@ -25,7 +26,7 @@ public class World {
 	public Texture getTexture(){
 		return image;
 	}
-
+	@Override
 	public void dispose() {
 		image.dispose();
 		
