@@ -25,14 +25,14 @@ public class InvaderSpawner {
 		counter = Constants.SPAWN_FREQENCY;
 	}
 	
-	public void update(float delta, World world){
+	public void update(float delta, World world, Textures textures){
 		counter -= delta;
 		if (counter <= 0) {
 			boolean direction = random.nextBoolean();
 			if (direction) {
-				invaders.add(new Invader(direction, -20, 100));
+				invaders.add(new Invader(direction, -20, 100,textures, Constants.NORMAL_TYPE));
 			}else{
-				invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100));
+				invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100,textures, Constants.NORMAL_TYPE));
 			}
 			counter = Constants.SPAWN_FREQENCY;
 		}

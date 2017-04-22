@@ -101,3 +101,38 @@ SnailMob5
   orig: 18, 14
   offset: 0, 0
   index: -1
+SnailMobR1
+  rotate: false
+  xy: 403, 369
+  size: 18, 14
+  orig: 18, 14
+  offset: 0, 0
+  index: -1
+SnailMobR2
+  rotate: false
+  xy: 437, 403
+  size: 18, 14
+  orig: 18, 14
+  offset: 0, 0
+  index: -1
+SnailMobR3
+  rotate: false
+  xy: 605, 571
+  size: 18, 14
+  orig: 18, 14
+  offset: 0, 0
+  index: -1
+SnailMobR4
+  rotate: false
+  xy: 639, 605
+  size: 18, 14
+  orig: 18, 14
+  offset: 0, 0
+  index: -1
+SnailMobR5
+  rotate: false
+  xy: 21, 1
+  size: 18, 14
+  orig: 18, 14
+  offset: 0, 0
+  index: -1

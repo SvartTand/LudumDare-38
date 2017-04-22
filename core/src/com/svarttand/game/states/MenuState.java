@@ -2,6 +2,7 @@ package com.svarttand.game.states;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
@@ -11,14 +12,14 @@ public class MenuState extends State{
 
 	private Viewport viewport;
 	private MenuHud hud;
-	private Texture background;
+	private TextureRegion background;
 	
 	public MenuState(GameStateManager gsm) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
 		hud = new MenuHud(cam);
-		background = new Texture("MainMenuBackground.png");
-		hud.initialize();
+		background = textures.getTextureRegion("MainMenuBackground");
+		hud.initialize(textures);
 	}
 
 	@Override
@@ -47,7 +48,6 @@ public class MenuState extends State{
 
 	@Override
 	public void dispose() {
-		background.dispose();
 		hud.dispose();
 	}
 

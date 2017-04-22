@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
+import com.svarttand.game.misc.Textures;
 
 public class PlayHud {
 
@@ -29,7 +30,6 @@ public class PlayHud {
 	private Viewport viewport;
 	
 	public Stage stage;
-	private Texture buttonTexture;
 	
 	private ArrayList<Button> buttonList;
 	
@@ -41,25 +41,29 @@ public class PlayHud {
 	private Label cityHP;
 	private Label domeHP;
 	
+	private float buttonWidth;
+	private float buttonHeight;
+	
 	public PlayHud(Camera camera){
 		this.camera = camera;
 		
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT,this.camera);
-		buttonTexture = new Texture("Button.png");
 		buttonList = new ArrayList<Button>();
 		renderer = new ShapeRenderer();
 		cityHealthWidth = 0;
 		domeHealthWidth = 0;
 	}
 	
-	public void initialize(){
+	public void initialize(Textures textures){
 		stage = new Stage(viewport);
 		cityHP = new Label(cityHealthWidth + "", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		domeHP = new Label(domeHP + "", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		buttonHeight = textures.getTextureRegion("Button").getRegionHeight();
+		buttonWidth = textures.getTextureRegion("Button").getRegionWidth();
 		for (int i = 0; i < 12; i++) {
 			final int buttonType = i;
-			Button button = new ImageButton(new TextureRegionDrawable(new TextureRegion(buttonTexture)));
-	        button.setPosition(3 + (buttonTexture.getWidth()+1) * i, 3);
+			Button button = new ImageButton(new TextureRegionDrawable(textures.getTextureRegion("Button")));
+	        button.setPosition(3 + (buttonWidth+1) * i, 3);
 	        
 	        button.addListener( new ClickListener() {              
 	            @Override
@@ -72,8 +76,8 @@ public class PlayHud {
 	        
 	        
 		}
-		cityHP.setPosition(Application.V_WIDTH*0.5f - cityHP.getWidth()*0.5f, buttonTexture.getHeight() + 6);
-		domeHP.setPosition(Application.V_WIDTH*0.5f - cityHP.getWidth()*0.5f, (buttonTexture.getHeight() + 6) * 1.5f);
+		cityHP.setPosition(Application.V_WIDTH*0.5f - cityHP.getWidth()*0.5f, buttonHeight + 6);
+		domeHP.setPosition(Application.V_WIDTH*0.5f - cityHP.getWidth()*0.5f, (buttonHeight + 6) * 1.5f);
 		stage.addActor(cityHP);
 		stage.addActor(domeHP);
 		Gdx.input.setInputProcessor(stage);
@@ -83,9 +87,9 @@ public class PlayHud {
 		renderer.setColor(Color.CYAN);
 		renderer.setProjectionMatrix(camera.combined);
 		renderer.begin(ShapeType.Filled);
-		renderer.rect(3, buttonTexture.getHeight()+6, cityHealthWidth, buttonTexture.getHeight()*0.5f);
+		renderer.rect(3, buttonHeight+6, cityHealthWidth, buttonHeight*0.5f);
 		renderer.setColor(Color.RED);
-		renderer.rect(3, (buttonTexture.getHeight()+6) * 1.5f, domeHealthWidth, buttonTexture.getHeight()*0.5f);
+		renderer.rect(3, (buttonHeight+6) * 1.5f, domeHealthWidth, buttonHeight*0.5f);
 		renderer.end();
 		
 	}

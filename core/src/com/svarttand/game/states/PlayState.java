@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
@@ -19,7 +20,7 @@ import com.svarttand.game.sprites.World;
 public class PlayState extends State{
 	
 	private Viewport viewport;
-	private Texture background;
+	private TextureRegion background;
 	private World world;
 	private Dome dome;
 	private PlayHud hud;
@@ -27,18 +28,15 @@ public class PlayState extends State{
 	private boolean canChange;
 	private ArrayList<Weapon> weapons;
 	private InvaderSpawner invaders;
-	
-	private Textures textures;
 
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
-		textures = new Textures();
-		background = new Texture("BackgroundPlaceholder.png");
+		background = textures.getTextureRegion("BackgroundPlaceholder");
 		world = new World(textures);
 		dome = new Dome();
 		hud = new PlayHud(cam);
-		hud.initialize();
+		hud.initialize(textures);
 		canChange = true;
 		weapons = new ArrayList<Weapon>();
 		invaders = new InvaderSpawner();
@@ -52,7 +50,7 @@ public class PlayState extends State{
 			
 			if (hud.getCurrentPressed() == Constants.BOMB && canChange) {
 				
-				Weapon weapon = new Weapon(weapons, invaders,dome);
+				Weapon weapon = new Weapon(weapons, invaders,dome, textures);
 				weapons.add(weapon);
 				canChange = false;
 			}
@@ -75,7 +73,7 @@ public class PlayState extends State{
 		for (int i = 0; i < weapons.size(); i++) {
 			weapons.get(i).update(mouse.x, mouse.y, delta);
 		}
-		invaders.update(delta, world);
+		invaders.update(delta, world, textures);
 		hud.update(world.getHitPoints(), dome.getHitPoints());
 	}
 
@@ -87,7 +85,7 @@ public class PlayState extends State{
 		batch.draw(textures.getTextureRegion(world.getTextureName()), Application.V_WIDTH*0.5f - world.getWidth()*0.5f, Application.V_HEIGHT/4);
 		batch.draw(textures.getTextureRegion(dome.getTexture()),0,0);
 		for (int i = 0; i < weapons.size(); i++) {
-			batch.draw(weapons.get(i).getTexture(), weapons.get(i).getPosition().x,weapons.get(i).getPosition().y);
+			batch.draw(textures.getTextureRegion(weapons.get(i).getTextureName()), weapons.get(i).getPosition().x,weapons.get(i).getPosition().y);
 		}
 		invaders.render(batch);
 		batch.end();
@@ -98,7 +96,6 @@ public class PlayState extends State{
 
 	@Override
 	public void dispose() {
-		background.dispose();
 		hud.dispose();
 		for (int i = 0; i < weapons.size(); i++) {
 			weapons.get(i).dispose();

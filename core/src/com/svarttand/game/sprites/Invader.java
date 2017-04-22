@@ -1,57 +1,74 @@
 package com.svarttand.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
+import com.svarttand.game.misc.Animation;
+import com.svarttand.game.misc.Textures;
 
 public class Invader implements Disposable{
 	
-	private static final float SPEED = 0.5f;
-	private static final int dmg = 20;
+	private float speed;
 	
 	private Vector2 velocity;
 	private Vector2 position;
+
 	
-	private Texture texture;
-	
-	
+	private int dmg;
 	private int hitpoints;
 	private Circle bounds;
 	
 	//true = wlaking right, false = walking left
 	private boolean direction;
 	
+	private Animation animation;
+	private String name;
 	
-	public Invader(boolean direction, int posX, int posY){
-		texture = new Texture("MobPlaceholder.png");
+	
+	public Invader(boolean direction, int posX, int posY, Textures textures, int type){
+		if (type == Constants.NORMAL_TYPE) {
+			name = "SnailMob";
+			dmg = 20;
+			speed = 0.5f;
+		}else{
+			name = "SnailMob";
+			dmg = 20;
+			speed = 0.5f;
+		}
+		
+		
 		this.direction = direction;
 		if (direction) {
-			velocity = new Vector2(SPEED,0);
+			velocity = new Vector2(speed,0);
+			name = name + "R";
 		}else{
-			velocity = new Vector2(-SPEED, 0);
+			velocity = new Vector2(-speed, 0);
 		}
+		animation = new Animation(name, 4, 0.5f, textures, 1);
 		position = new Vector2(posX,posY);
 		hitpoints = 20;
-		bounds = new Circle(position, texture.getWidth()*0.5f);
+		bounds = new Circle(position, textures.getTextureRegion(name + 1).getRegionWidth()*0.5f);
 		
 	}
 	
 	public void update(float delta, World world){
+		animation.update(delta);
 		if (direction) {
-			if (velocity.x >= SPEED) {
-				velocity.x = SPEED;
+			if (velocity.x >= speed) {
+				velocity.x = speed;
 			}else{
-				velocity.add(SPEED*delta,0);
+				velocity.add(speed*delta,0);
 			}
 			
 		}else{
-			if (velocity.x <= -SPEED) {
-				velocity.x = -SPEED;
+			if (velocity.x <= -speed) {
+				velocity.x = -speed;
 			}else{
-				velocity.add(-SPEED*delta,0);
+				velocity.add(-speed*delta,0);
 			}
 		}
 		if (position.y <= Application.V_HEIGHT/4) {
@@ -85,8 +102,13 @@ public class Invader implements Disposable{
 		System.out.println(forceX + ", " + forceY);
 	}
 	
-	public Texture getTexture(){
-		return texture;
+	public TextureRegion getTexture(){
+		if (position.y > 100) {
+			return animation.getFrame(4);
+		}else{
+			return animation.getFrame();
+		}
+		
 	}
 	
 	public Vector2 getPosition(){
@@ -103,7 +125,7 @@ public class Invader implements Disposable{
 
 	@Override
 	public void dispose() {
-		texture.dispose();
+		
 		
 	}
 	

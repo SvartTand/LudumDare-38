@@ -8,12 +8,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.misc.InvaderSpawner;
+import com.svarttand.game.misc.Textures;
 
 
 public class Weapon implements Disposable{
 	
 	private float force;
-	private Texture texture;
+	private String textureName;
 	private Vector2 position;
 	private static final int dmg = 15;
 	private Circle blast;
@@ -27,8 +28,13 @@ public class Weapon implements Disposable{
 	private InvaderSpawner invaders;
 	private Dome dome;
 	
-	public Weapon(ArrayList<Weapon> list, InvaderSpawner invaders, Dome dome){
-		texture = new Texture("BombPlaceholder.png");
+	private float width;
+	private float height;
+	
+	public Weapon(ArrayList<Weapon> list, InvaderSpawner invaders, Dome dome, Textures textures){
+		textureName = "BombPlaceholder";
+		width = textures.getTextureRegion(textureName).getRegionWidth();
+		height = textures.getTextureRegion(textureName).getRegionHeight();
 		position = new Vector2();
 		blast = new Circle(position, 40);
 		released = false;
@@ -55,8 +61,8 @@ public class Weapon implements Disposable{
 			}
 			
 		}else{
-			position.x = (float) (mousePositionX - texture.getWidth()* 0.5);
-			position.y = (float) (mousePositionY - texture.getHeight()* 0.5);
+			position.x = (float) (mousePositionX - width* 0.5);
+			position.y = (float) (mousePositionY - height* 0.5);
 		}
 		blast.setPosition(position);
 		
@@ -82,13 +88,12 @@ public class Weapon implements Disposable{
 		return position;
 	}
 	
-	public Texture getTexture(){
-		return texture;
+	public String getTextureName(){
+		return textureName;
 	}
 	@Override
 	public void dispose() {
 		list.remove(this);
-		texture.dispose();
 		
 	}
 
