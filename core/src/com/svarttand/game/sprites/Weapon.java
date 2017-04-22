@@ -3,17 +3,19 @@ package com.svarttand.game.sprites;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 import com.svarttand.game.constants.Constants;
+import com.svarttand.game.misc.InvaderSpawner;
 
-import javafx.scene.shape.Circle;
 
 public class Weapon implements Disposable{
 	
+	private float force;
 	private Texture texture;
 	private Vector2 position;
-	private int dmg;
+	private static final int dmg = 15;
 	private Circle blast;
 	
 	private boolean released;
@@ -22,13 +24,18 @@ public class Weapon implements Disposable{
 	private float velocity;
 	private ArrayList<Weapon> list;
 	
-	public Weapon(ArrayList<Weapon> list){
+	private InvaderSpawner invaders;
+	
+	public Weapon(ArrayList<Weapon> list, InvaderSpawner invaders){
 		texture = new Texture("BombPlaceholder.png");
 		position = new Vector2();
-		blast = new Circle(10);
+		blast = new Circle(position, 40);
 		released = false;
 		detonationTime = 3;
 		this.list = list;
+		this.invaders = invaders;
+		force = 0.1f;
+		
 	}
 	
 	public void update(float mousePositionX, float mousePositionY, float delta){
@@ -49,6 +56,8 @@ public class Weapon implements Disposable{
 			position.x = (float) (mousePositionX - texture.getWidth()* 0.5);
 			position.y = (float) (mousePositionY - texture.getHeight()* 0.5);
 		}
+		blast.setPosition(position);
+		
 		
 	}
 	public void release(){
@@ -56,7 +65,7 @@ public class Weapon implements Disposable{
 	}
 	
 	public void detonate(){
-		System.out.println("BOOOM");
+		invaders.explosion(blast, dmg, force);
 		dispose();
 	}
 	

@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.huds.PlayHud;
+import com.svarttand.game.misc.InvaderSpawner;
 import com.svarttand.game.sprites.Weapon;
 import com.svarttand.game.sprites.World;
 
@@ -23,6 +24,8 @@ public class PlayState extends State{
 	private boolean canChange;
 	
 	private ArrayList<Weapon> weapons;
+	
+	private InvaderSpawner invaders;
 
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
@@ -33,19 +36,18 @@ public class PlayState extends State{
 		hud.initialize();
 		canChange = true;
 		weapons = new ArrayList<Weapon>();
+		invaders = new InvaderSpawner();
 		
 	}
 
 	@Override
 	protected void handleInput(float delta) {
 		
-		System.out.println(hud.getCurrentPressed());
-		
 		if (Gdx.input.isTouched()) {
-			System.out.println("yo1");
+			
 			if (hud.getCurrentPressed() == Constants.BOMB && canChange) {
-				System.out.println("yo2");
-				Weapon weapon = new Weapon(weapons);
+				
+				Weapon weapon = new Weapon(weapons, invaders);
 				weapons.add(weapon);
 				canChange = false;
 			}
@@ -67,6 +69,7 @@ public class PlayState extends State{
 		for (int i = 0; i < weapons.size(); i++) {
 			weapons.get(i).update(mouse.x, mouse.y, delta);
 		}
+		invaders.update(delta);
 		
 	}
 
@@ -79,6 +82,7 @@ public class PlayState extends State{
 		for (int i = 0; i < weapons.size(); i++) {
 			batch.draw(weapons.get(i).getTexture(), weapons.get(i).getPosition().x,weapons.get(i).getPosition().y);
 		}
+		invaders.render(batch);
 		batch.end();
 		hud.stage.draw();
 		
@@ -89,6 +93,10 @@ public class PlayState extends State{
 		background.dispose();
 		hud.dispose();
 		world.dispose();
+		for (int i = 0; i < weapons.size(); i++) {
+			weapons.get(i).dispose();
+		}
+		invaders.dispose();
 		
 	}
 
@@ -96,9 +104,8 @@ public class PlayState extends State{
 	public void resize(int width, int height) {
 		viewport.update(width, height);
 		hud.getViewport().update(width, height);
-		for (int i = 0; i < weapons.size(); i++) {
-			weapons.get(i).dispose();
-		}
+		
+		
 		
 	}
 
