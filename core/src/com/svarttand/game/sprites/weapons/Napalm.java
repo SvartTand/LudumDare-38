@@ -109,8 +109,9 @@ public class Napalm implements Weapons{
 		for (int i = 0; i < positions.size(); i++) {
 			invaders.explosion(new Circle(positions.get(i), width*0.5f), dmg, force);
 			invaders.addExplosion(new Explosion(positions.get(i), "Fire", textures, 5, width, height,false));
+			
 		}
-		textures.getSound(Audio.ROCK_HIT).play();
+		textures.getSound(Audio.FIRE).play();
 		dispose();
 		
 	}
