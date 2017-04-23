@@ -14,13 +14,14 @@ public class Audio {
 	public static final int WALKING = 4;
 	public static final int BUTTON_PRESS = 5;
 	public static final int BOMB_EXPLOSION = 6;
+	public static final int SPLAT = 7;
 	
 	private ArrayList<Sound> sounds;
 	
 	public Audio(){
 		sounds = new ArrayList<Sound>();
 		String path = "data/";
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 8; i++) {
 			sounds.add(Gdx.audio.newSound(Gdx.files.internal(path + i + ".wav")));
 		}
 	}

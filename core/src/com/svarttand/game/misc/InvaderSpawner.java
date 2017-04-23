@@ -57,8 +57,9 @@ public class InvaderSpawner {
 					addExplosion(new Explosion(invaders.get(i).getPosition(), "SnailMobEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
 				}else{
 					addExplosion(new Explosion(invaders.get(i).getPosition(), "FlyingMonsterEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
+					
 				}
-				
+				textures.getSound(Audio.SPLAT).play(0.5f);
 				invaders.get(i).dispose();
 				invaders.remove(i);
 				score++;

@@ -19,6 +19,7 @@ import com.svarttand.game.sprites.Dome;
 import com.svarttand.game.sprites.World;
 import com.svarttand.game.sprites.weapons.Granade;
 import com.svarttand.game.sprites.weapons.MysteryBomb;
+import com.svarttand.game.sprites.weapons.Napalm;
 import com.svarttand.game.sprites.weapons.Nuke;
 import com.svarttand.game.sprites.weapons.Rock;
 import com.svarttand.game.sprites.weapons.Weapon;
@@ -92,6 +93,13 @@ public class PlayState extends State{
 				weapons.add(box);
 				canChange = false;
 			}
+			else if (hud.getCurrentPressed() == Constants.NAPALM && canChange) {
+				Napalm napalm = new Napalm(weapons, invaders, dome, textures);
+				cooldown = napalm.getCooldown();
+				maxCooldown = cooldown;
+				weapons.add(napalm);
+				canChange = false;
+			}
 		}else if (weapons.size() > 0) {
 			weapons.get(weapons.size()-1).release();
 			
@@ -117,6 +125,9 @@ public class PlayState extends State{
 		}
 		if (Gdx.input.isKeyJustPressed(Keys.NUM_5)) {
 			hud.setCurrentpressed(4);
+		}
+		if (Gdx.input.isKeyJustPressed(Keys.NUM_6)) {
+			hud.setCurrentpressed(5);
 		}
 		
 		

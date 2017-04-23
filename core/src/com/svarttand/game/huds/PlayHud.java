@@ -66,20 +66,12 @@ public class PlayHud {
 		for (int i = 0; i < 6; i++) {
 			final int buttonType = i;
 			Button button;
-			if (i<=4) {
-				ImageButtonStyle style1 = new ImageButtonStyle(new TextureRegionDrawable(textures.getTextureRegion("Button" + i)), null, null, null, null, null);
-				ImageButtonStyle style2 = new ImageButtonStyle(new TextureRegionDrawable(textures.getTextureRegion("Button" + i + "Pressed")), null, null, null, null, null);
-				buttonStyles.add(style1);
-				buttonStyles.add(style2);
-				button = new ImageButton(style1);
-				
-			}else{
-				ImageButtonStyle style1 = new ImageButtonStyle(new TextureRegionDrawable(textures.getTextureRegion("Button")), null, null, null, null, null);
-				ImageButtonStyle style2 = new ImageButtonStyle(new TextureRegionDrawable(textures.getTextureRegion("Button2Pressed")), null, null, null, null, null);
-				buttonStyles.add(style1);
-				buttonStyles.add(style2);
-				button = new ImageButton(style1);
-			}
+			ImageButtonStyle style1 = new ImageButtonStyle(new TextureRegionDrawable(textures.getTextureRegion("Button" + i)), null, null, null, null, null);
+			ImageButtonStyle style2 = new ImageButtonStyle(new TextureRegionDrawable(textures.getTextureRegion("Button" + i + "Pressed")), null, null, null, null, null);
+			buttonStyles.add(style1);
+			buttonStyles.add(style2);
+			button = new ImageButton(style1);
+
 			
 	        button.setPosition(3 + (buttonWidth+40) * i, 3);
 	        
@@ -147,6 +139,9 @@ public class PlayHud {
 		}
 		if (currentPressed == Constants.NUKE) {
 			currentlySelected.setText("Nuke");
+		}
+		if (currentPressed == Constants.NAPALM) {
+			currentlySelected.setText("Napalm");
 		}
 		for (int i = 0; i < buttonList.size(); i++) {
 			if (currentPressed == i) {
