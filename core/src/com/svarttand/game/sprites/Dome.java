@@ -6,7 +6,7 @@ import com.svarttand.game.misc.InvaderSpawner;
 
 public class Dome {
 	
-	private static final int MAX_HP = 1500;
+	private static final int MAX_HP = 1100;
 	
 	private float hitPoints;
 	private String texture;

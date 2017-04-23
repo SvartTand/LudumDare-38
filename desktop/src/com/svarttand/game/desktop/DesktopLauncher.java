@@ -8,8 +8,8 @@ import com.svarttand.game.Application;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.height = 600;
-		config.width = 600;
+		config.height = 800;
+		config.width = 800;
 		config.title = "Destroy The Dome";
 		config.addIcon("Icon.png", FileType.Internal);
 		new LwjglApplication(new Application(), config);
