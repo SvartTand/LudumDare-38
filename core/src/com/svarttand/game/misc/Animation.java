@@ -10,6 +10,7 @@ public class Animation {
 	private float currentFrameTime;
 	private int frameCount;
 	private int frame;
+
 	
 	public Animation(String name, int frameCount, float cycletime, Textures textures){
 		frames = new Array<TextureRegion>();
@@ -19,6 +20,7 @@ public class Animation {
 		this.frameCount = frameCount;
 		maxFrameTime = cycletime / frameCount;
 		frame = 0;
+
 	}
 	
 	public Animation(String name, int frameCount, float cycletime, Textures textures, int extraFrames){
@@ -30,6 +32,7 @@ public class Animation {
 		this.frameCount = frameCount;
 		maxFrameTime = cycletime / frameCount;
 		frame = 0;
+
 	}
 	
 	public void update(float delta){

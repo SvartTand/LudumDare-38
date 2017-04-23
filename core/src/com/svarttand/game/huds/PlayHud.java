@@ -63,7 +63,7 @@ public class PlayHud {
 		currentlySelected = new Label("---Nothingness---" , new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		buttonHeight = textures.getTextureRegion("Button").getRegionHeight();
 		buttonWidth = textures.getTextureRegion("Button").getRegionWidth();
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 6; i++) {
 			final int buttonType = i;
 			Button button;
 			if (i<=4) {
@@ -81,7 +81,7 @@ public class PlayHud {
 				button = new ImageButton(style1);
 			}
 			
-	        button.setPosition(3 + (buttonWidth+1) * i, 3);
+	        button.setPosition(3 + (buttonWidth+40) * i, 3);
 	        
 	        button.addListener( new ClickListener() {              
 	            @Override

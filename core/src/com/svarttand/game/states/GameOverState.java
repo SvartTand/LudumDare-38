@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
 import com.svarttand.game.huds.GameOverHud;
+import com.svarttand.game.misc.Audio;
 
 public class GameOverState extends State{
 
@@ -27,9 +28,11 @@ public class GameOverState extends State{
 	@Override
 	protected void handleInput(float delta) {
 		if (hud.getButtonPressed() == 1) {
+			textures.getSound(Audio.BUTTON_PRESS).play();
 			gsm.set(new PlayState(gsm));
 		}
 		if (hud.getButtonPressed() == 2) {
+			textures.getSound(Audio.BUTTON_PRESS).play();
 			gsm.set(new MenuState(gsm));
 		}
 		

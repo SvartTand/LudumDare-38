@@ -88,7 +88,7 @@ public class Nuke implements Weapons{
 			dome.takeDamage(dmg);
 		}
 		invaders.addExplosion(new Explosion(position, "NukeExplosion", textures, 14, width, height,true));
-		textures.getSound(Audio.BOMB_EXPLOSION).play();
+		textures.getSound(Audio.NUKE_EXPLOSION).play();
 		dispose();
 	}
 	@Override

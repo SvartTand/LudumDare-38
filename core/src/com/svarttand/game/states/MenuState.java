@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
 import com.svarttand.game.huds.MenuHud;
+import com.svarttand.game.misc.Audio;
 
 public class MenuState extends State{
 
@@ -24,9 +25,11 @@ public class MenuState extends State{
 	@Override
 	protected void handleInput(float delta) {
 		if (hud.isPressed() == 1) {
+			textures.getSound(Audio.BUTTON_PRESS).play();
 			gsm.set(new PlayState(gsm));
 		}
 		if (hud.isPressed() == 2) {
+			textures.getSound(Audio.BUTTON_PRESS).play();
 			gsm.set(new HelpState(gsm));
 		}
 		

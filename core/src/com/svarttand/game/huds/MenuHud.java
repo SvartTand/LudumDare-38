@@ -31,6 +31,8 @@ public class MenuHud {
 	
 	private int isPressed;
 	
+	private Label info;
+	
 	private float buttonWidth;
 	private float buttonHeight;
 	
@@ -42,6 +44,10 @@ public class MenuHud {
 	public void initialize(Textures textures){
 		
 		stage = new Stage(viewport);
+		
+		info = new Label("Made by Albert Lindberg in 48 hours for Ludum Dare 38", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		info.setPosition(Application.V_WIDTH*0.5f-info.getWidth()*0.5f,   Application.V_HEIGHT*0.01f);
+        
 		
 		BitmapFont font = new BitmapFont();
         skin = new Skin(textures.getAtlas());
@@ -74,6 +80,7 @@ public class MenuHud {
             };
         });
         stage.addActor(button2);
+        stage.addActor(info);
         Gdx.input.setInputProcessor(stage);
         
 	}
