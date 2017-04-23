@@ -129,7 +129,7 @@ public class PlayHud {
 			currentlySelected.setText("Rock");
 		}
 		if (currentPressed == Constants.GRANADE) {
-			currentlySelected.setText("Granade");
+			currentlySelected.setText("Grenade");
 		}
 		if (currentPressed == Constants.BOMB) {
 			currentlySelected.setText("Bomb");
