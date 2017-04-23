@@ -27,5 +27,9 @@ public class Textures {
 		atlas.dispose();
 		
 	}
+	
+	public TextureAtlas getAtlas(){
+		return atlas;
+	}
 
 }

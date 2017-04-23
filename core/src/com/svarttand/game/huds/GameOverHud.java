@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -24,14 +27,12 @@ public class GameOverHud {
 	private int score;
 	
 	private Label resultLabel;
-	private Label retryLabel;
-	private Label backLabel;
 	
 	private float buttonWidth;
 	private float buttonHeight;
 	
 	private int isPressed;
-	
+	private Skin skin;
 	private Label winLabel;
 	
 	public GameOverHud(Camera cam, int score){
@@ -43,14 +44,15 @@ public class GameOverHud {
 	}
 	
 	public void initialize(Textures textures, boolean win){
+		BitmapFont font = new BitmapFont();
+        skin = new Skin(textures.getAtlas());
+        TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+        textButtonStyle.font = font;
+        textButtonStyle.up = skin.getDrawable("BigButton");
+        textButtonStyle.down = skin.getDrawable("BigButtonPressed");
+		
 		buttonHeight = textures.getTextureRegion("BigButton").getRegionHeight();
 		buttonWidth = textures.getTextureRegion("BigButton").getRegionWidth();
-		
-		retryLabel = new Label("RETRY", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		retryLabel.setPosition(Application.V_WIDTH*0.5f - retryLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.15f - buttonHeight*0.3f);
-		
-		backLabel = new Label("MENU", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		backLabel.setPosition(Application.V_WIDTH*0.5f - backLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.05f - buttonHeight*0.3f);
 		
 		resultLabel = new Label("YOUR KILL COUNT WAS: " + score, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		resultLabel.setPosition(Application.V_WIDTH*0.5f - resultLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.22f - buttonHeight*0.3f);
@@ -63,7 +65,7 @@ public class GameOverHud {
 			winLabel.setPosition(Application.V_WIDTH*0.5f - winLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.8f - buttonHeight*0.3f);
 		}
 		
-		Button button = new ImageButton(new TextureRegionDrawable(textures.getTextureRegion("BigButton")));
+		Button button = new TextButton("RETRY", textButtonStyle);
         button.setPosition(Application.V_WIDTH*0.5f - buttonWidth*0.5f, Application.V_HEIGHT*0.15f - buttonHeight*0.5f);
         button.addListener( new ClickListener() {              
             @Override
@@ -71,7 +73,7 @@ public class GameOverHud {
                 isPressed = 1;
             };
         });
-        Button button2 = new ImageButton(new TextureRegionDrawable(textures.getTextureRegion("BigButton")));
+        Button button2 = new TextButton("MENU", textButtonStyle);
         button2.setPosition(Application.V_WIDTH*0.5f - buttonWidth*0.5f, Application.V_HEIGHT*0.05f - buttonHeight*0.5f);
         button2.addListener( new ClickListener() {              
             @Override
@@ -82,9 +84,7 @@ public class GameOverHud {
         
         stage.addActor(button2);
         stage.addActor(button);
-        stage.addActor(backLabel);
         stage.addActor(resultLabel);
-        stage.addActor(retryLabel);
         stage.addActor(winLabel);
         Gdx.input.setInputProcessor(stage);
 	}
@@ -99,6 +99,7 @@ public class GameOverHud {
 	
 	public void dispose() {
 		stage.dispose();
+		skin.dispose();
 	}
 
 }

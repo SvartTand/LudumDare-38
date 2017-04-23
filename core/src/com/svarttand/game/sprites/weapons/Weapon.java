@@ -26,7 +26,7 @@ public class Weapon implements Weapons{
 	private String textureName;
 	private Vector2 position;
 	private static final int dmg = 15;
-	private static final float COOLDOWN = 1f;
+	private static final float COOLDOWN = 1.4f;
 	private Circle blast;
 	
 	private boolean released;

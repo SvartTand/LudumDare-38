@@ -103,6 +103,21 @@ public class PlayState extends State{
 		if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 			gsm.set(new MenuState(gsm));
 		}
+		if (Gdx.input.isKeyJustPressed(Keys.NUM_1)) {
+			hud.setCurrentpressed(0);
+		}
+		if (Gdx.input.isKeyJustPressed(Keys.NUM_2)) {
+			hud.setCurrentpressed(1);
+		}
+		if (Gdx.input.isKeyJustPressed(Keys.NUM_3)) {
+			hud.setCurrentpressed(2);
+		}
+		if (Gdx.input.isKeyJustPressed(Keys.NUM_4)) {
+			hud.setCurrentpressed(3);
+		}
+		if (Gdx.input.isKeyJustPressed(Keys.NUM_5)) {
+			hud.setCurrentpressed(4);
+		}
 		
 		
 	}

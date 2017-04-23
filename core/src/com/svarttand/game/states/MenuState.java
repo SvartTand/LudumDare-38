@@ -45,6 +45,7 @@ public class MenuState extends State{
 		batch.begin();
 		batch.draw(background, 0, 0);
 		batch.draw(textures.getTextureRegion("Dome1"),0,Application.V_HEIGHT*0.5f);
+		batch.draw(textures.getTextureRegion("Logo"),Application.V_WIDTH*0.5f - textures.getTextureRegion("Logo").getRegionWidth()*0.5f, Application.V_HEIGHT*0.57f);
 		batch.end();
 		hud.stage.draw();
 	}

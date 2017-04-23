@@ -87,7 +87,7 @@ public class PlayHud {
 	            @Override
 	            public void clicked(InputEvent event, float x, float y) {
 	                currentPressed = buttonType;
-	                ButtonUpdate();
+	                
 	            };
 	        });
 	        buttonList.add(button);
@@ -107,13 +107,7 @@ public class PlayHud {
 		
 	}
 	private void ButtonUpdate(){
-		for (int i = 0; i < buttonList.size(); i++) {
-			if (currentPressed == i) {
-				buttonList.get(i).setStyle(buttonStyles.get(i*2+1));
-			}else{
-				buttonList.get(i).setStyle(buttonStyles.get(i*2));
-			}
-		}
+		
 	}
 	
 	public void render(ShapeRenderer renderer){
@@ -154,6 +148,17 @@ public class PlayHud {
 		if (currentPressed == Constants.NUKE) {
 			currentlySelected.setText("Nuke");
 		}
+		for (int i = 0; i < buttonList.size(); i++) {
+			if (currentPressed == i) {
+				buttonList.get(i).setStyle(buttonStyles.get(i*2+1));
+			}else{
+				buttonList.get(i).setStyle(buttonStyles.get(i*2));
+			}
+		}
+	}
+	
+	public void setCurrentpressed(int nr){
+		currentPressed = nr;
 	}
 	
 	public int getCurrentPressed(){

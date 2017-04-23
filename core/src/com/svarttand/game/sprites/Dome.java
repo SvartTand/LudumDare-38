@@ -46,7 +46,7 @@ public class Dome {
 			invaderSpawner.setFrequency(0.5f);
 		}if (getHitPoints()<0.1) {
 			texture = "Dome10";
-			invaderSpawner.setFrequency(0.25f);
+			invaderSpawner.setFrequency(0.35f);
 		}
 	}
 	
