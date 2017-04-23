@@ -3,6 +3,7 @@ package com.svarttand.game.states;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -41,7 +42,7 @@ public class PlayState extends State{
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
-		background = textures.getTextureRegion("BackgroundPlaceholder");
+		background = textures.getTextureRegion("MainMenuBackground");
 		world = new World(textures);
 		dome = new Dome();
 		hud = new PlayHud(cam);
@@ -91,10 +92,14 @@ public class PlayState extends State{
 				weapons.add(box);
 				canChange = false;
 			}
-		}else if (weapons.size() > 0 && weapons.get(weapons.size()-1) != null) {
+		}else if (weapons.size() > 0) {
 			weapons.get(weapons.size()-1).release();
 			
-		}		
+		}	
+		
+		if (Gdx.input.isKeyJustPressed(Keys.SPACE) && weapons.size() > 0 && !weapons.get(weapons.size()-1).getTextureName().equals("Rock")) {
+			weapons.get(weapons.size()-1).detonate();;
+		}
 		
 	}
 			
@@ -107,7 +112,10 @@ public class PlayState extends State{
 		world.update(delta);
 		dome.update(delta);
 		if (world.getHitPoints()<= 0) {
-			gsm.set(new MenuState(gsm));
+			gsm.set(new GameOverState(gsm, invaders.getScore()));
+		}
+		if (dome.getHitPoints() <= 0) {
+			gsm.set(new GameOverState(gsm, invaders.getScore()));
 		}
 		
 		cooldown -= delta;
@@ -127,8 +135,8 @@ public class PlayState extends State{
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
 		batch.draw(background, 0,0);
-		batch.draw(textures.getTextureRegion(world.getTextureName()), Application.V_WIDTH*0.5f - world.getWidth()*0.5f, Application.V_HEIGHT/4);
-		batch.draw(textures.getTextureRegion(dome.getTexture()),0,0);
+		batch.draw(textures.getTextureRegion(world.getTextureName()), Application.V_WIDTH*0.5f - world.getWidth()*0.5f, Application.V_HEIGHT/4-8);
+		batch.draw(textures.getTextureRegion(dome.getTexture()),0,Application.V_HEIGHT*0.5f);
 		for (int i = 0; i < weapons.size(); i++) {
 			weapons.get(i).render(batch);
 		}

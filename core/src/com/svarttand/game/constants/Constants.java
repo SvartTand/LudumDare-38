@@ -14,6 +14,7 @@ public final class Constants {
 	
 	public static final int NORMAL_TYPE = 0;
 	public static final int GIANT = 1;
+	public static final int FLYING = 2;
 	
 	
 

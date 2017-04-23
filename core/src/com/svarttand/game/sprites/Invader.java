@@ -35,6 +35,10 @@ public class Invader implements Disposable{
 	private float HPBarPositionY;
 	private float HPBarLength;
 	
+	private boolean extras;
+	
+	private int type;
+	
 	
 	public Invader(boolean direction, int posX, int posY, Textures textures, int type){
 		if (type == Constants.NORMAL_TYPE) {
@@ -43,29 +47,48 @@ public class Invader implements Disposable{
 			speed = 0.5f;
 			maxHP = 20;
 			hitpoints = maxHP;
+			this.direction = direction;
+			if (direction) {
+				velocity = new Vector2(speed,0);
+				name = name + "R";
+			}else{
+				velocity = new Vector2(-speed, 0);
+			}
+			animation = new Animation(name, 4, 0.5f, textures, 1);
+			extras = true;
 		}else if (type == Constants.GIANT) {
-			name = "SnailMob";
+			name = "Slime";
 			dmg = 10;
 			speed = 0.2f;
 			maxHP = 200;
 			hitpoints = maxHP;
+			this.direction = direction;
+			if (direction) {
+				velocity = new Vector2(speed,0);
+				name = name + "R";
+			}else{
+				velocity = new Vector2(-speed, 0);
+			}
+			animation = new Animation(name, 4, 0.5f, textures, 1);
+			extras = false;
 		}else{
 			name = "SnailMob";
 			dmg = 20;
 			speed = 0.5f;
 			maxHP = 20;
 			hitpoints = maxHP;
+			this.direction = direction;
+			if (direction) {
+				velocity = new Vector2(speed,0);
+				name = name + "R";
+			}else{
+				velocity = new Vector2(-speed, 0);
+			}
+			animation = new Animation(name, 4, 0.5f, textures, 1);
+			extras = true;
 		}
+		this.type = type;
 		
-		
-		this.direction = direction;
-		if (direction) {
-			velocity = new Vector2(speed,0);
-			name = name + "R";
-		}else{
-			velocity = new Vector2(-speed, 0);
-		}
-		animation = new Animation(name, 4, 0.5f, textures, 1);
 		position = new Vector2(posX,posY);
 		bounds = new Circle(position, textures.getTextureRegion(name + 1).getRegionWidth()*0.5f);
 		HPBarPositionY =textures.getTextureRegion(name + 1).getRegionHeight() + 5;
@@ -120,12 +143,18 @@ public class Invader implements Disposable{
 		hitpoints -= dmg;
 	}
 	
+	public int getType(){
+		return type;
+	}
+	
 	public TextureRegion getTexture(){
-		if (position.y > 100) {
-			return animation.getFrame(4);
-		}else{
-			return animation.getFrame();
+		if (extras) {
+			if (position.y > 100) {
+				return animation.getFrame(4);
+			}
 		}
+		return animation.getFrame();
+		
 		
 	}
 	

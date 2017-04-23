@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.misc.Audio;
 import com.svarttand.game.misc.Explosion;
@@ -83,10 +84,9 @@ public class Nuke implements Weapons{
 	@Override
 	public void detonate(){
 		invaders.explosion(blast, dmg, force);
-		if (!blast.overlaps(dome.getBounds())) {
+		if (position.y + blast.radius >= Application.V_HEIGHT*0.9) {
 			dome.takeDamage(dmg);
 		}
-		
 		invaders.addExplosion(new Explosion(position, "NukeExplosion", textures, 14, width, height,true));
 		textures.getSound(Audio.BOMB_EXPLOSION).play();
 		dispose();

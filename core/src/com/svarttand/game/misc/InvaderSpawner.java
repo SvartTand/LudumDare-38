@@ -39,9 +39,9 @@ public class InvaderSpawner {
 			boolean direction = random.nextBoolean();
 			if (direction) {
 				if (random.nextBoolean()) {
-					invaders.add(new Invader(direction, -20, 100,textures, Constants.NORMAL_TYPE));
+					invaders.add(new Invader(direction, -50, 100,textures, Constants.NORMAL_TYPE));
 				}else{
-					invaders.add(new Invader(direction, -20, 100,textures, Constants.GIANT));
+					invaders.add(new Invader(direction, -50, 100,textures, Constants.GIANT));
 				}
 				
 			}else{
@@ -57,7 +57,12 @@ public class InvaderSpawner {
 		for (int i = 0; i < invaders.size(); i++) {
 			invaders.get(i).update(delta, world);
 			if (invaders.get(i).getHitpoints() <= 0) {
-				addExplosion(new Explosion(invaders.get(i).getPosition(), "SnailMobEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
+				if (invaders.get(i).getType() == Constants.GIANT) {
+					addExplosion(new Explosion(invaders.get(i).getPosition(), "SlimeEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
+				}else{
+					addExplosion(new Explosion(invaders.get(i).getPosition(), "SnailMobEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
+				}
+				
 				invaders.get(i).dispose();
 				invaders.remove(i);
 				score++;

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.misc.Audio;
 import com.svarttand.game.misc.InvaderSpawner;
@@ -20,7 +21,7 @@ public class MysteryBomb implements Weapons {
 	private String textureName;
 	private Vector2 position;
 	private static final int dmg = 30;
-	private static final float COOLDOWN = 0.3f;
+	private static final float COOLDOWN = 1.5f;
 	private Circle blast;
 	
 	private boolean released;
@@ -83,7 +84,6 @@ public class MysteryBomb implements Weapons {
 		if (detonated) {
 			for (int i = 0; i < bombs.size(); i++) {
 				bombs.get(i).update(position.x, position.y, delta);
-				System.out.println(i);
 			}
 		}
 		if (detonated && bombs.isEmpty()) {
@@ -101,21 +101,24 @@ public class MysteryBomb implements Weapons {
 
 	@Override
 	public void detonate() {
-		detonated = true;
-		invaders.explosion(blast, dmg, force);
-		if (!blast.overlaps(dome.getBounds())) {
-			dome.takeDamage(dmg);
+		if (!detonated) {
+			detonated = true;
+			invaders.explosion(blast, dmg, force);
+			if (position.y + blast.radius >= Application.V_HEIGHT*0.9) {
+				dome.takeDamage(dmg);
+			}
+			for (int i = 0; i < 4; i++) {
+				Weapon placeholder = new Weapon(bombs, invaders, dome, textures);
+				placeholder.setPosition(position);
+				position.y = position.y + 5;
+				placeholder.release();
+				placeholder.setPosition(position);
+				placeholder.setVelocity(-0.5f);
+				bombs.add(placeholder);
+			}
+			textures.getSound(Audio.GRANADE_EXPLOSION).play();
 		}
-		for (int i = 0; i < 4; i++) {
-			Weapon placeholder = new Weapon(bombs, invaders, dome, textures);
-			placeholder.setPosition(position);
-			position.y = 102;
-			placeholder.release();
-			placeholder.setPosition(position);
-			placeholder.setVelocity(-0.5f);
-			bombs.add(placeholder);
-		}
-		textures.getSound(Audio.GRANADE_EXPLOSION).play();
+		
 		
 		
 	}

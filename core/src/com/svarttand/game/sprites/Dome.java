@@ -1,6 +1,7 @@
 package com.svarttand.game.sprites;
 
-import com.badlogic.gdx.graphics.Texture;
+import java.util.ArrayList;
+
 import com.badlogic.gdx.math.Circle;
 import com.svarttand.game.Application;
 
@@ -14,7 +15,7 @@ public class Dome {
 	
 	public Dome(){
 		hitPoints = MAX_HP;
-		texture = "DomePlaceholder";
+		texture = "Dome";
 		bounds = new Circle(Application.V_WIDTH*0.5f, Application.V_HEIGHT*0.5f, Application.V_WIDTH*0.4f);
 		
 	}

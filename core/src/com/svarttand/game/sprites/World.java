@@ -24,6 +24,12 @@ public class World{
 	}
 	
 	public void update(float delta){
+		if (getHitPoints()<= 0.6) {
+			imageName = "City2";
+		}
+		if (getHitPoints()<= 0.2) {
+			imageName = "City3";
+		}
 		
 	}
 	
