@@ -13,12 +13,15 @@ public class GameOverState extends State{
 	private GameOverHud hud;
 	private TextureRegion background;
 	
-	public GameOverState(GameStateManager gsm, int score) {
+	private boolean win;
+	
+	public GameOverState(GameStateManager gsm, int score, boolean win) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
 		hud = new GameOverHud(cam, score);
-		hud.initialize(textures);
+		hud.initialize(textures, win);
 		background = textures.getTextureRegion("MainMenuBackground");
+		this.win = win;
 	}
 
 	@Override
@@ -40,6 +43,9 @@ public class GameOverState extends State{
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
 		batch.draw(background,0,0);
+		if (!win) {
+			batch.draw(textures.getTextureRegion("City3"),Application.V_WIDTH*0.5f - textures.getTextureRegion("City3").getRegionWidth()*0.5f, Application.V_HEIGHT/4-9);
+		}
 		batch.end();
 		hud.stage.draw();
 		

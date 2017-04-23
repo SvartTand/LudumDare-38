@@ -112,10 +112,10 @@ public class PlayState extends State{
 		world.update(delta);
 		dome.update(delta);
 		if (world.getHitPoints()<= 0) {
-			gsm.set(new GameOverState(gsm, invaders.getScore()));
+			gsm.set(new GameOverState(gsm, invaders.getScore(),false));
 		}
 		if (dome.getHitPoints() <= 0) {
-			gsm.set(new GameOverState(gsm, invaders.getScore()));
+			gsm.set(new GameOverState(gsm, invaders.getScore(),true));
 		}
 		
 		cooldown -= delta;
@@ -135,7 +135,7 @@ public class PlayState extends State{
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
 		batch.draw(background, 0,0);
-		batch.draw(textures.getTextureRegion(world.getTextureName()), Application.V_WIDTH*0.5f - world.getWidth()*0.5f, Application.V_HEIGHT/4-8);
+		batch.draw(textures.getTextureRegion(world.getTextureName()), Application.V_WIDTH*0.5f - world.getWidth()*0.5f, Application.V_HEIGHT/4-9);
 		batch.draw(textures.getTextureRegion(dome.getTexture()),0,Application.V_HEIGHT*0.5f);
 		for (int i = 0; i < weapons.size(); i++) {
 			weapons.get(i).render(batch);

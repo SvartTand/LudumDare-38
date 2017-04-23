@@ -9,13 +9,15 @@ public class Audio {
 	
 	public static final int BOMB_EXPLOSION = 0;
 	public static final int GRANADE_EXPLOSION = 1;
+	public static final int ROCK_HIT = 2;
+	public static final int MYSTERYBOX = 3;
 	
 	private ArrayList<Sound> sounds;
 	
 	public Audio(){
 		sounds = new ArrayList<Sound>();
 		String path = "data/";
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 4; i++) {
 			sounds.add(Gdx.audio.newSound(Gdx.files.internal(path + i + ".wav")));
 		}
 	}

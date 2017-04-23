@@ -39,6 +39,8 @@ public class Invader implements Disposable{
 	
 	private int type;
 	
+	private float ground;
+	
 	
 	public Invader(boolean direction, int posX, int posY, Textures textures, int type){
 		if (type == Constants.NORMAL_TYPE) {
@@ -47,6 +49,7 @@ public class Invader implements Disposable{
 			speed = 0.5f;
 			maxHP = 20;
 			hitpoints = maxHP;
+			ground = Application.V_HEIGHT*0.25f;
 			this.direction = direction;
 			if (direction) {
 				velocity = new Vector2(speed,0);
@@ -60,8 +63,9 @@ public class Invader implements Disposable{
 			name = "Slime";
 			dmg = 10;
 			speed = 0.2f;
-			maxHP = 200;
+			maxHP = 150;
 			hitpoints = maxHP;
+			ground = Application.V_HEIGHT*0.25f;
 			this.direction = direction;
 			if (direction) {
 				velocity = new Vector2(speed,0);
@@ -69,7 +73,23 @@ public class Invader implements Disposable{
 			}else{
 				velocity = new Vector2(-speed, 0);
 			}
-			animation = new Animation(name, 4, 0.5f, textures, 1);
+			animation = new Animation(name, 4, 0.5f, textures);
+			extras = false;
+		}else if (type == Constants.FLYING) {
+			name = "FlyingMonster";
+			dmg = 5;
+			speed = 0.7f;
+			maxHP = 7;
+			hitpoints = maxHP;
+			ground = Application.V_HEIGHT*0.5f;
+			this.direction = direction;
+			if (direction) {
+				velocity = new Vector2(speed,0);
+				name = name + "R";
+			}else{
+				velocity = new Vector2(-speed, 0);
+			}
+			animation = new Animation(name, 4, 0.5f, textures);
 			extras = false;
 		}else{
 			name = "SnailMob";
@@ -77,6 +97,7 @@ public class Invader implements Disposable{
 			speed = 0.5f;
 			maxHP = 20;
 			hitpoints = maxHP;
+			ground = Application.V_HEIGHT*0.25f;
 			this.direction = direction;
 			if (direction) {
 				velocity = new Vector2(speed,0);
@@ -113,8 +134,8 @@ public class Invader implements Disposable{
 				velocity.add(-speed*delta,0);
 			}
 		}
-		if (position.y <= Application.V_HEIGHT/4) {
-			position.y = Application.V_HEIGHT/4;
+		if (position.y <= ground) {
+			position.y = ground;
 			
 		}else{
 			velocity.y += -Constants.GRAVITY*delta;
@@ -122,12 +143,12 @@ public class Invader implements Disposable{
 		
 		if (position.x <= Application.V_WIDTH*0.5&& !direction) {
 			direction = true;
-			if (position.y <= Application.V_HEIGHT/4) {
+			if (position.y <= ground) {
 				world.takeDmg(dmg);
 			}
 		}else if (direction && position.x >= Application.V_WIDTH*0.5) {
 			direction = false;
-			if (position.y <= Application.V_HEIGHT/4) {
+			if (position.y <= ground) {
 				world.takeDmg(dmg);
 			}
 		}

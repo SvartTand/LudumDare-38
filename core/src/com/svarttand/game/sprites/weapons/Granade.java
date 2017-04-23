@@ -20,7 +20,7 @@ public class Granade implements Weapons{
 	private float force;
 	private String textureName;
 	private Vector2 position;
-	private static final int dmg = 5;
+	private static final int dmg = 6;
 	private static final float COOLDOWN = 0.3f;
 	private Circle blast;
 	

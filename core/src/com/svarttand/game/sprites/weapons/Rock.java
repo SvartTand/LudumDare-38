@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.misc.Audio;
+import com.svarttand.game.misc.Explosion;
 import com.svarttand.game.misc.InvaderSpawner;
 import com.svarttand.game.misc.Textures;
 import com.svarttand.game.misc.Weapons;
@@ -87,7 +88,8 @@ public class Rock implements Weapons{
 		if (position.y + blast.radius >= Application.V_HEIGHT*0.9) {
 			dome.takeDamage(dmg);
 		}
-		textures.getSound(Audio.GRANADE_EXPLOSION).play();
+		invaders.addExplosion(new Explosion(position, "RockExplosion", textures, 5, width, height,false));
+		textures.getSound(Audio.ROCK_HIT).play();
 		dispose();
 		
 	}

@@ -7,7 +7,7 @@ import com.svarttand.game.Application;
 
 public class Dome {
 	
-	private static final int MAX_HP = 5000;
+	private static final int MAX_HP = 1500;
 	
 	private float hitPoints;
 	private String texture;

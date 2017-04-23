@@ -59,7 +59,7 @@ public class PlayHud {
 		stage = new Stage(viewport);
 		cityHP = new Label("City HP: " + cityHealthWidth, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		domeHP = new Label("Dome HP: " + domeHP, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		scoreLabel = new Label("Score: ", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		scoreLabel = new Label("Kills: ", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		currentlySelected = new Label("---Nothingness---" , new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		buttonHeight = textures.getTextureRegion("Button").getRegionHeight();
 		buttonWidth = textures.getTextureRegion("Button").getRegionWidth();
@@ -137,7 +137,7 @@ public class PlayHud {
 		
 		cityHP.setText("City HP: " +  cityValue*100 + "%");
 		domeHP.setText("Dome HP: " + domeValue*100 + "%");
-		scoreLabel.setText("Score: " + score);
+		scoreLabel.setText("Kills: " + score);
 		
 		if (currentPressed == Constants.STONE) {
 			currentlySelected.setText("Rock");

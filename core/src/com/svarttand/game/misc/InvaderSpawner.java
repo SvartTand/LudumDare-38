@@ -36,21 +36,13 @@ public class InvaderSpawner {
 		this.textures = textures;
 		counter -= delta;
 		if (counter <= 0) {
+			int type = random.nextInt(3);
 			boolean direction = random.nextBoolean();
 			if (direction) {
-				if (random.nextBoolean()) {
-					invaders.add(new Invader(direction, -50, 100,textures, Constants.NORMAL_TYPE));
-				}else{
-					invaders.add(new Invader(direction, -50, 100,textures, Constants.GIANT));
-				}
+				invaders.add(new Invader(direction, -50, 100,textures, type));
 				
 			}else{
-				if (random.nextBoolean()) {
-					invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100,textures, Constants.NORMAL_TYPE));
-				}else{
-					invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100,textures, Constants.GIANT));
-				}
-				
+				invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100,textures, type));
 			}
 			counter = Constants.SPAWN_FREQENCY;
 		}
@@ -59,8 +51,10 @@ public class InvaderSpawner {
 			if (invaders.get(i).getHitpoints() <= 0) {
 				if (invaders.get(i).getType() == Constants.GIANT) {
 					addExplosion(new Explosion(invaders.get(i).getPosition(), "SlimeEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
-				}else{
+				}else if(Constants.NORMAL_TYPE == invaders.get(i).getType()){
 					addExplosion(new Explosion(invaders.get(i).getPosition(), "SnailMobEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
+				}else{
+					addExplosion(new Explosion(invaders.get(i).getPosition(), "FlyingMonsterEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
 				}
 				
 				invaders.get(i).dispose();

@@ -31,6 +31,8 @@ public class GameOverHud {
 	
 	private int isPressed;
 	
+	private Label winLabel;
+	
 	public GameOverHud(Camera cam, int score){
 		this.camera = cam;
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT,camera);
@@ -39,15 +41,23 @@ public class GameOverHud {
 		isPressed = 0;
 	}
 	
-	public void initialize(Textures textures){
+	public void initialize(Textures textures, boolean win){
 		buttonHeight = textures.getTextureRegion("BigButton").getRegionHeight();
 		buttonWidth = textures.getTextureRegion("BigButton").getRegionWidth();
 		
 		retryLabel = new Label("RETRY", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		retryLabel.setPosition(Application.V_WIDTH*0.5f - retryLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.15f - buttonHeight*0.3f);
 		
-		resultLabel = new Label("YOUR SCORE WAS: " + score, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		resultLabel = new Label("YOUR KILL COUNT WAS: " + score, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		resultLabel.setPosition(Application.V_WIDTH*0.5f - resultLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.22f - buttonHeight*0.3f);
+		
+		if (win) {
+			winLabel = new Label("VICTORY!", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+			winLabel.setPosition(Application.V_WIDTH*0.5f - winLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.8f - buttonHeight*0.3f);
+		}else{
+			winLabel = new Label("DEFEATED!", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+			winLabel.setPosition(Application.V_WIDTH*0.5f - winLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.8f - buttonHeight*0.3f);
+		}
 		
 		Button button = new ImageButton(new TextureRegionDrawable(textures.getTextureRegion("BigButton")));
         button.setPosition(Application.V_WIDTH*0.5f - buttonWidth*0.5f, Application.V_HEIGHT*0.15f - buttonHeight*0.5f);
@@ -62,6 +72,7 @@ public class GameOverHud {
         stage.addActor(button);
         stage.addActor(resultLabel);
         stage.addActor(retryLabel);
+        stage.addActor(winLabel);
         Gdx.input.setInputProcessor(stage);
 	}
 	

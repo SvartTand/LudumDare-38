@@ -116,7 +116,7 @@ public class MysteryBomb implements Weapons {
 				placeholder.setVelocity(-0.5f);
 				bombs.add(placeholder);
 			}
-			textures.getSound(Audio.GRANADE_EXPLOSION).play();
+			textures.getSound(Audio.MYSTERYBOX).play();
 		}
 		
 		
