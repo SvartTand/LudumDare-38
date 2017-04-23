@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
@@ -33,6 +35,7 @@ public class PlayState extends State{
 	private InvaderSpawner invaders;
 	
 	private float cooldown;
+	private ShapeRenderer renderer;
 
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
@@ -45,6 +48,7 @@ public class PlayState extends State{
 		canChange = true;
 		weapons = new ArrayList<Weapons>();
 		invaders = new InvaderSpawner();
+		renderer = new ShapeRenderer();
 		
 	}
 
@@ -124,9 +128,12 @@ public class PlayState extends State{
 		}
 		invaders.render(batch);
 		batch.end();
-		hud.render();
+		renderer.setProjectionMatrix(cam.combined);
+		renderer.begin(ShapeType.Filled);
+		hud.render(renderer);
+		invaders.shapeRender(renderer);
+		renderer.end();
 		hud.stage.draw();
-		
 	}
 
 	@Override

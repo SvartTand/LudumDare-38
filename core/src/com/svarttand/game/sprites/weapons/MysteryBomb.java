@@ -1,6 +1,7 @@
 package com.svarttand.game.sprites.weapons;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
@@ -26,7 +27,7 @@ public class MysteryBomb implements Weapons {
 	private float velocity;
 	private ArrayList<Weapons> list;
 	
-	private ArrayList<Weapon> bombs;
+	private ArrayList<Weapons> bombs;
 	
 	private InvaderSpawner invaders;
 	private Dome dome;
@@ -35,6 +36,7 @@ public class MysteryBomb implements Weapons {
 	
 	private float width;
 	private float height;
+	private boolean detonated;
 	
 	public MysteryBomb(ArrayList<Weapons> list, InvaderSpawner invaders, Dome dome, Textures textures){
 		textureName = "MysteryBox";
@@ -49,27 +51,41 @@ public class MysteryBomb implements Weapons {
 		this.dome = dome;
 		force = 0.01f;
 		this.textures = textures;
+		bombs = new ArrayList<Weapons>();
+		detonated = false;
 	}
+	
 
 	@Override
 	public void update(float mousePositionX, float mousePositionY, float delta) {
-		if (released) {
-			velocity += Constants.GRAVITY * delta;
-			if (position.y <= 100) {
-				detonate();
+		if (!detonated) {
+			if (released) {
+				velocity += Constants.GRAVITY * delta;
+				if (position.y <= 100) {
+					detonate();
+				}else{
+					position.add(0, 0 - velocity);
+				}
+				detonationTime -= delta;
+				if (detonationTime <= 0) {
+					detonate();
+				}
+				
 			}else{
-				position.add(0, 0 - velocity);
+				position.x = (float) (mousePositionX - width* 0.5);
+				position.y = (float) (mousePositionY - height* 0.5);
 			}
-			detonationTime -= delta;
-			if (detonationTime <= 0) {
-				detonate();
-			}
-			
-		}else{
-			position.x = (float) (mousePositionX - width* 0.5);
-			position.y = (float) (mousePositionY - height* 0.5);
+			blast.setPosition(position);
 		}
-		blast.setPosition(position);
+		
+		if (detonated) {
+			for (int i = 0; i < bombs.size(); i++) {
+				bombs.get(i).update(100, position.y, delta);
+			}
+		}
+		if (detonated && bombs.isEmpty()) {
+			dispose();
+		}
 		
 	}
 
@@ -82,12 +98,21 @@ public class MysteryBomb implements Weapons {
 
 	@Override
 	public void detonate() {
+		detonated = true;
 		invaders.explosion(blast, dmg, force);
 		if (!blast.overlaps(dome.getBounds())) {
 			dome.takeDamage(dmg);
 		}
+		Random random = new Random();
+		for (int i = 0; i < 4; i++) {
+			Granade placeholder = new Granade(list, invaders, dome, textures);
+			placeholder.release();
+			placeholder.setVelocity(random.nextInt((2 - 0) + 1));
+			bombs.add(placeholder);
+		}
+		
 		textures.getSound(Audio.GRANADE_EXPLOSION).play();
-		dispose();
+		
 		
 	}
 

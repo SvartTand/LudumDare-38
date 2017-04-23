@@ -5,252 +5,399 @@ filter: Nearest,Nearest
 repeat: none
 BackgroundPlaceholder
   rotate: false
-  xy: 1, 621
+  xy: 1, 623
   size: 400, 400
   orig: 400, 400
   offset: 0, 0
   index: -1
 DomePlaceholder
   rotate: false
-  xy: 1, 219
+  xy: 1, 221
   size: 400, 400
   orig: 400, 400
   offset: 0, 0
   index: -1
 MainMenuBackground
   rotate: false
-  xy: 403, 621
+  xy: 403, 623
   size: 400, 400
   orig: 400, 400
   offset: 0, 0
   index: -1
 City1
   rotate: false
-  xy: 1, 17
+  xy: 1, 19
   size: 200, 200
   orig: 200, 200
   offset: 0, 0
   index: -1
 CityPlaceholder
   rotate: false
-  xy: 403, 419
+  xy: 403, 421
   size: 200, 200
   orig: 200, 200
   offset: 0, 0
   index: -1
 BigButton
   rotate: false
-  xy: 805, 989
+  xy: 805, 991
   size: 128, 32
   orig: 128, 32
   offset: 0, 0
   index: -1
+BigExplosion1
+  rotate: false
+  xy: 203, 139
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion2
+  rotate: false
+  xy: 403, 339
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion3
+  rotate: false
+  xy: 605, 541
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion4
+  rotate: false
+  xy: 805, 909
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion5
+  rotate: false
+  xy: 203, 57
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion6
+  rotate: false
+  xy: 285, 139
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion7
+  rotate: false
+  xy: 403, 257
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion8
+  rotate: false
+  xy: 485, 339
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+Explosion1
+  rotate: false
+  xy: 605, 499
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion2
+  rotate: false
+  xy: 687, 581
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion3
+  rotate: false
+  xy: 805, 867
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion4
+  rotate: false
+  xy: 887, 949
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion5
+  rotate: false
+  xy: 285, 97
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion6
+  rotate: false
+  xy: 485, 297
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
 BombPlaceholder
   rotate: false
-  xy: 203, 185
+  xy: 935, 991
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button
   rotate: false
-  xy: 403, 385
+  xy: 203, 23
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button0
   rotate: false
-  xy: 605, 587
+  xy: 367, 187
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button0Pressed
   rotate: false
-  xy: 805, 955
+  xy: 403, 223
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button1
   rotate: false
-  xy: 935, 989
+  xy: 567, 387
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button1Pressed
   rotate: false
-  xy: 203, 151
+  xy: 605, 465
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button2
   rotate: false
-  xy: 237, 185
+  xy: 647, 507
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button2Pressed
   rotate: false
-  xy: 403, 351
+  xy: 687, 547
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button3
   rotate: false
-  xy: 437, 385
+  xy: 729, 589
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button3Pressed
   rotate: false
-  xy: 605, 553
+  xy: 805, 833
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button4
   rotate: false
-  xy: 639, 587
+  xy: 847, 875
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button4Pressed
   rotate: false
-  xy: 805, 921
+  xy: 887, 915
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 ButtonPressed
   rotate: false
-  xy: 839, 955
+  xy: 929, 957
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 MobPlaceholder
   rotate: false
-  xy: 969, 989
+  xy: 285, 63
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Nuke
   rotate: false
-  xy: 203, 117
+  xy: 327, 105
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Rock
-  rotate: false
-  xy: 1003, 1001
-  size: 20, 20
-  orig: 20, 20
-  offset: 0, 0
-  index: -1
 Bomb
   rotate: false
-  xy: 237, 163
+  xy: 203, 1
   size: 24, 20
   orig: 24, 20
   offset: 0, 0
   index: -1
+Rock
+  rotate: false
+  xy: 229, 1
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
 MysteryBox
   rotate: false
-  xy: 271, 195
+  xy: 485, 273
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+SnailMobEffect1
+  rotate: false
+  xy: 527, 315
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+SnailMobEffect2
+  rotate: false
+  xy: 969, 1001
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+SnailMobEffect3
+  rotate: false
+  xy: 367, 163
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+SnailMobEffect4
+  rotate: false
+  xy: 437, 233
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+SnailMobEffect5
+  rotate: false
+  xy: 567, 363
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+SnailMobEffect6
+  rotate: false
+  xy: 605, 441
   size: 22, 22
   orig: 22, 22
   offset: 0, 0
   index: -1
 SnailMob1
   rotate: false
-  xy: 1, 1
+  xy: 763, 607
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob2
   rotate: false
-  xy: 403, 335
+  xy: 805, 817
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob3
   rotate: false
-  xy: 437, 369
+  xy: 1, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob4
   rotate: false
-  xy: 471, 403
+  xy: 237, 41
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob5
   rotate: false
-  xy: 605, 537
+  xy: 485, 257
+  size: 18, 14
+  orig: 18, 14
+  offset: 0, 0
+  index: -1
+SnailMobEffect
+  rotate: false
+  xy: 527, 299
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR1
   rotate: false
-  xy: 639, 571
+  xy: 993, 1009
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR2
   rotate: false
-  xy: 673, 605
+  xy: 367, 147
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR3
   rotate: false
-  xy: 805, 905
+  xy: 461, 241
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR4
   rotate: false
-  xy: 839, 939
+  xy: 567, 347
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR5
   rotate: false
-  xy: 873, 973
+  xy: 605, 425
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 Granade
   rotate: false
-  xy: 203, 105
+  xy: 509, 285
   size: 8, 10
   orig: 8, 10
   offset: 0, 0
   index: -1
 Particle
   rotate: false
-  xy: 1003, 994
+  xy: 639, 492
   size: 5, 5
   orig: 5, 5
   offset: 0, 0

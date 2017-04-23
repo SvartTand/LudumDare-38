@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.misc.Audio;
+import com.svarttand.game.misc.Explosion;
 import com.svarttand.game.misc.InvaderSpawner;
 import com.svarttand.game.misc.Textures;
 import com.svarttand.game.misc.Weapons;
@@ -89,6 +90,7 @@ public class Weapon implements Weapons{
 			dome.takeDamage(dmg);
 		}
 		textures.getSound(Audio.BOMB_EXPLOSION).play();
+		invaders.addExplosion(new Explosion(position, "BigExplosion", textures, 8, width, height));
 		dispose();
 	}
 	@Override

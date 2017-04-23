@@ -3,7 +3,9 @@ package com.svarttand.game.misc;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.svarttand.game.Application;
 import com.svarttand.game.constants.Constants;
@@ -17,14 +19,19 @@ public class InvaderSpawner {
 	private ArrayList<Invader> invaders;
 	private Random random;
 	private float counter;
+	private ArrayList<Explosion> explosions;
+	private Textures textures;
+
 	
 	public InvaderSpawner(){
 		invaders = new ArrayList<Invader>();
 		random = new Random();
 		counter = Constants.SPAWN_FREQENCY;
+		explosions = new ArrayList<Explosion>();
 	}
 	
 	public void update(float delta, World world, Textures textures){
+		this.textures = textures;
 		counter -= delta;
 		if (counter <= 0) {
 			boolean direction = random.nextBoolean();
@@ -48,8 +55,14 @@ public class InvaderSpawner {
 		for (int i = 0; i < invaders.size(); i++) {
 			invaders.get(i).update(delta, world);
 			if (invaders.get(i).getHitpoints() <= 0) {
+				addExplosion(new Explosion(invaders.get(i).getPosition(), "SnailMobEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight()));
 				invaders.get(i).dispose();
 				invaders.remove(i);
+			}
+		}
+		for (int i = 0; i < explosions.size(); i++) {
+			if (!explosions.get(i).update(delta)) {
+				explosions.remove(i);
 			}
 		}
 	}
@@ -57,6 +70,9 @@ public class InvaderSpawner {
 	public void render(SpriteBatch batch){
 		for (int i = 0; i < invaders.size(); i++) {
 			batch.draw(invaders.get(i).getTexture(), invaders.get(i).getPosition().x, invaders.get(i).getPosition().y);
+		}
+		for (int i = 0; i < explosions.size(); i++) {
+			batch.draw(textures.getTextureRegion(explosions.get(i).getTextureName()),explosions.get(i).getPosition().x ,explosions.get(i).getPosition().y);
 		}
 	}
 	
@@ -75,6 +91,18 @@ public class InvaderSpawner {
 			invaders.get(i).dispose();
 		}
 		
+	}
+
+	public void addExplosion(Explosion explosion) {
+		explosions.add(explosion);
+		
+	}
+
+	public void shapeRender(ShapeRenderer renderer) {
+		renderer.setColor(Color.RED);
+		for (int i = 0; i < invaders.size(); i++) {
+			invaders.get(i).render(renderer);
+		}
 	}
 
 }

@@ -109,14 +109,11 @@ public class PlayHud {
 		}
 	}
 	
-	public void render(){
+	public void render(ShapeRenderer renderer){
 		renderer.setColor(Color.SKY);
-		renderer.setProjectionMatrix(camera.combined);
-		renderer.begin(ShapeType.Filled);
 		renderer.rect(3, buttonHeight+6, cityHealthWidth, buttonHeight*0.5f);
 		renderer.setColor(Color.FIREBRICK);
 		renderer.rect(3, (buttonHeight+6) * 1.5f, domeHealthWidth, buttonHeight*0.5f);
-		renderer.end();
 		
 	}
 	

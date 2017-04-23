@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.svarttand.game.constants.Constants;
 import com.svarttand.game.misc.Audio;
+import com.svarttand.game.misc.Explosion;
 import com.svarttand.game.misc.InvaderSpawner;
 import com.svarttand.game.misc.Textures;
 import com.svarttand.game.misc.Weapons;
@@ -84,9 +85,14 @@ public class Granade implements Weapons{
 		if (!blast.overlaps(dome.getBounds())) {
 			dome.takeDamage(dmg);
 		}
+		invaders.addExplosion(new Explosion(position, "Explosion", textures, 5, width, height));
 		textures.getSound(Audio.GRANADE_EXPLOSION).play();
 		dispose();
 		
+	}
+	
+	public void setVelocity(float velocity) {
+		this.velocity = velocity;
 	}
 
 	@Override
