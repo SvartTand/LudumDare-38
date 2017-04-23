@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
@@ -56,6 +58,11 @@ public class Weapon implements Weapons{
 		
 		
 	}
+	
+	public void setPosition(Vector2 position) {
+		this.position = position;
+	}
+	
 	@Override
 	public void update(float mousePositionX, float mousePositionY, float delta){
 		
@@ -90,7 +97,7 @@ public class Weapon implements Weapons{
 			dome.takeDamage(dmg);
 		}
 		textures.getSound(Audio.BOMB_EXPLOSION).play();
-		invaders.addExplosion(new Explosion(position, "BigExplosion", textures, 8, width, height));
+		invaders.addExplosion(new Explosion(position, "BigExplosion", textures, 8, width, height, false));
 		dispose();
 	}
 	@Override
@@ -102,8 +109,12 @@ public class Weapon implements Weapons{
 		return position;
 	}
 	@Override
-	public String getTextureName(){
-		return textureName;
+	public TextureRegion getTextureRegion(){
+		return textures.getTextureRegion(textureName);
+	}
+	@Override
+	public void render(SpriteBatch batch){
+		batch.draw(textures.getTextureRegion(textureName),position.x,position.y);
 	}
 	@Override
 	public void dispose() {
@@ -113,6 +124,15 @@ public class Weapon implements Weapons{
 	}
 	public float getCooldown() {
 		return COOLDOWN;
+	}
+	@Override
+	public String getTextureName() {
+		
+		return textureName;
+	}
+	public void setVelocity(float f) {
+		velocity = f;
+		
 	}
 
 }

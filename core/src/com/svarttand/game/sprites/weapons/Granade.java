@@ -2,6 +2,8 @@ package com.svarttand.game.sprites.weapons;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.svarttand.game.constants.Constants;
@@ -85,7 +87,7 @@ public class Granade implements Weapons{
 		if (!blast.overlaps(dome.getBounds())) {
 			dome.takeDamage(dmg);
 		}
-		invaders.addExplosion(new Explosion(position, "Explosion", textures, 5, width, height));
+		invaders.addExplosion(new Explosion(position, "Explosion", textures, 5, width, height,false));
 		textures.getSound(Audio.GRANADE_EXPLOSION).play();
 		dispose();
 		
@@ -116,6 +118,17 @@ public class Granade implements Weapons{
 	@Override
 	public float getCooldown() {
 		return COOLDOWN;
+	}
+
+	@Override
+	public TextureRegion getTextureRegion() {
+		return textures.getTextureRegion(textureName);
+	}
+
+	@Override
+	public void render(SpriteBatch batch) {
+		batch.draw(textures.getTextureRegion(textureName),position.x,position.y);
+		
 	}
 
 	

@@ -35,6 +35,7 @@ public class PlayState extends State{
 	private InvaderSpawner invaders;
 	
 	private float cooldown;
+	private float maxCooldown;
 	private ShapeRenderer renderer;
 
 	public PlayState(GameStateManager gsm) {
@@ -62,26 +63,31 @@ public class PlayState extends State{
 				Weapon weapon = new Weapon(weapons, invaders, dome, textures);
 				weapons.add(weapon);
 				cooldown = weapon.getCooldown();
+				maxCooldown = cooldown;
 				canChange = false;
 			}else if (hud.getCurrentPressed() == Constants.GRANADE && canChange) {
 				Granade granade = new Granade(weapons, invaders, dome, textures);
 				cooldown = granade.getCooldown();
+				maxCooldown = cooldown;
 				weapons.add(granade);
 				canChange = false;
 			}else if (hud.getCurrentPressed() == Constants.STONE && canChange) {
 				Rock stone = new Rock(weapons, invaders, dome, textures);
 				cooldown = stone.getCooldown();
+				maxCooldown = cooldown;
 				weapons.add(stone);
 				canChange = false;
 			}else if (hud.getCurrentPressed() == Constants.NUKE && canChange) {
 				Nuke nuke = new Nuke(weapons, invaders, dome, textures);
 				cooldown = nuke.getCooldown();
+				maxCooldown = cooldown;
 				weapons.add(nuke);
 				canChange = false;
 			}
 			else if (hud.getCurrentPressed() == Constants.MYSTERYBOX && canChange) {
 				MysteryBomb box = new MysteryBomb(weapons, invaders, dome, textures);
 				cooldown = box.getCooldown();
+				maxCooldown = cooldown;
 				weapons.add(box);
 				canChange = false;
 			}
@@ -113,7 +119,7 @@ public class PlayState extends State{
 			weapons.get(i).update(mouse.x, mouse.y, delta);
 		}
 		invaders.update(delta, world, textures);
-		hud.update(world.getHitPoints(), dome.getHitPoints());
+		hud.update(world.getHitPoints(), dome.getHitPoints(), invaders.getScore(), cooldown/maxCooldown);
 	}
 
 	@Override
@@ -124,7 +130,7 @@ public class PlayState extends State{
 		batch.draw(textures.getTextureRegion(world.getTextureName()), Application.V_WIDTH*0.5f - world.getWidth()*0.5f, Application.V_HEIGHT/4);
 		batch.draw(textures.getTextureRegion(dome.getTexture()),0,0);
 		for (int i = 0; i < weapons.size(); i++) {
-			batch.draw(textures.getTextureRegion(weapons.get(i).getTextureName()), weapons.get(i).getPosition().x,weapons.get(i).getPosition().y);
+			weapons.get(i).render(batch);
 		}
 		invaders.render(batch);
 		batch.end();

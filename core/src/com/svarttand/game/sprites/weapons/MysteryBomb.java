@@ -3,6 +3,8 @@ package com.svarttand.game.sprites.weapons;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.svarttand.game.constants.Constants;
@@ -80,7 +82,8 @@ public class MysteryBomb implements Weapons {
 		
 		if (detonated) {
 			for (int i = 0; i < bombs.size(); i++) {
-				bombs.get(i).update(100, position.y, delta);
+				bombs.get(i).update(position.x, position.y, delta);
+				System.out.println(i);
 			}
 		}
 		if (detonated && bombs.isEmpty()) {
@@ -103,14 +106,15 @@ public class MysteryBomb implements Weapons {
 		if (!blast.overlaps(dome.getBounds())) {
 			dome.takeDamage(dmg);
 		}
-		Random random = new Random();
 		for (int i = 0; i < 4; i++) {
-			Granade placeholder = new Granade(list, invaders, dome, textures);
+			Weapon placeholder = new Weapon(bombs, invaders, dome, textures);
+			placeholder.setPosition(position);
+			position.y = 102;
 			placeholder.release();
-			placeholder.setVelocity(random.nextInt((2 - 0) + 1));
+			placeholder.setPosition(position);
+			placeholder.setVelocity(-0.5f);
 			bombs.add(placeholder);
 		}
-		
 		textures.getSound(Audio.GRANADE_EXPLOSION).play();
 		
 		
@@ -130,6 +134,9 @@ public class MysteryBomb implements Weapons {
 	}
 	@Override
 	public void dispose() {
+		for (int i = 0; i < bombs.size(); i++) {
+			bombs.get(i).dispose();
+		}
 		list.remove(this);
 		
 	}
@@ -137,6 +144,22 @@ public class MysteryBomb implements Weapons {
 	@Override
 	public float getCooldown() {
 		return COOLDOWN;
+	}
+
+
+	@Override
+	public TextureRegion getTextureRegion() {
+		return textures.getTextureRegion(textureName);
+	}
+
+
+	@Override
+	public void render(SpriteBatch batch) {
+		batch.draw(textures.getTextureRegion(textureName),position.x,position.y);
+		for (int i = 0; i < bombs.size(); i++) {
+			bombs.get(i).render(batch);
+		}
+		
 	}
 
 }

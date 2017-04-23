@@ -21,6 +21,7 @@ public class InvaderSpawner {
 	private float counter;
 	private ArrayList<Explosion> explosions;
 	private Textures textures;
+	private int score;
 
 	
 	public InvaderSpawner(){
@@ -28,6 +29,7 @@ public class InvaderSpawner {
 		random = new Random();
 		counter = Constants.SPAWN_FREQENCY;
 		explosions = new ArrayList<Explosion>();
+		score = 0;
 	}
 	
 	public void update(float delta, World world, Textures textures){
@@ -55,9 +57,10 @@ public class InvaderSpawner {
 		for (int i = 0; i < invaders.size(); i++) {
 			invaders.get(i).update(delta, world);
 			if (invaders.get(i).getHitpoints() <= 0) {
-				addExplosion(new Explosion(invaders.get(i).getPosition(), "SnailMobEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight()));
+				addExplosion(new Explosion(invaders.get(i).getPosition(), "SnailMobEffect", textures, 6, invaders.get(i).getTexture().getRegionWidth(), invaders.get(i).getTexture().getRegionHeight(),false));
 				invaders.get(i).dispose();
 				invaders.remove(i);
+				score++;
 			}
 		}
 		for (int i = 0; i < explosions.size(); i++) {
@@ -103,6 +106,10 @@ public class InvaderSpawner {
 		for (int i = 0; i < invaders.size(); i++) {
 			invaders.get(i).render(renderer);
 		}
+	}
+	
+	public int getScore(){
+		return score;
 	}
 
 }

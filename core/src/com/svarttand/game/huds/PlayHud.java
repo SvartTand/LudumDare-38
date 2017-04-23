@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -20,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
+import com.svarttand.game.constants.Constants;
 import com.svarttand.game.misc.Textures;
 
 public class PlayHud {
@@ -33,12 +33,14 @@ public class PlayHud {
 	private ArrayList<ButtonStyle> buttonStyles;
 	
 	private int currentPressed;
-	private ShapeRenderer renderer;
 	private float cityHealthWidth;
 	private float domeHealthWidth;
+	private float cooldownWidth;
 	
 	private Label cityHP;
 	private Label domeHP;
+	private Label scoreLabel;
+	private Label currentlySelected;
 	
 	private float buttonWidth;
 	private float buttonHeight;
@@ -49,15 +51,16 @@ public class PlayHud {
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT,this.camera);
 		buttonList = new ArrayList<Button>();
 		buttonStyles = new ArrayList<ButtonStyle>();
-		renderer = new ShapeRenderer();
 		cityHealthWidth = 0;
 		domeHealthWidth = 0;
 	}
 	
 	public void initialize(Textures textures){
 		stage = new Stage(viewport);
-		cityHP = new Label("City HP: " + cityHealthWidth + "", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		domeHP = new Label("Dome HP: " + domeHP + "", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		cityHP = new Label("City HP: " + cityHealthWidth, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		domeHP = new Label("Dome HP: " + domeHP, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		scoreLabel = new Label("Score: ", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		currentlySelected = new Label("---Nothingness---" , new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		buttonHeight = textures.getTextureRegion("Button").getRegionHeight();
 		buttonWidth = textures.getTextureRegion("Button").getRegionWidth();
 		for (int i = 0; i < 12; i++) {
@@ -84,7 +87,7 @@ public class PlayHud {
 	            @Override
 	            public void clicked(InputEvent event, float x, float y) {
 	                currentPressed = buttonType;
-	                update();
+	                ButtonUpdate();
 	            };
 	        });
 	        buttonList.add(button);
@@ -92,14 +95,18 @@ public class PlayHud {
 	        
 	        
 		}
+		scoreLabel.setPosition(5, (buttonHeight + 6) * 2f);
+		currentlySelected.setPosition(Application.V_WIDTH - currentlySelected.getWidth(), (buttonHeight + 6) * 2f);
 		cityHP.setPosition(Application.V_WIDTH*0.5f - cityHP.getWidth()*0.5f, buttonHeight + 6);
 		domeHP.setPosition(Application.V_WIDTH*0.5f - domeHP.getWidth()*0.5f, (buttonHeight + 6) * 1.5f);
 		stage.addActor(cityHP);
 		stage.addActor(domeHP);
+		stage.addActor(scoreLabel);
+		stage.addActor(currentlySelected);
 		Gdx.input.setInputProcessor(stage);
 		
 	}
-	public void update(){
+	private void ButtonUpdate(){
 		for (int i = 0; i < buttonList.size(); i++) {
 			if (currentPressed == i) {
 				buttonList.get(i).setStyle(buttonStyles.get(i*2+1));
@@ -114,14 +121,39 @@ public class PlayHud {
 		renderer.rect(3, buttonHeight+6, cityHealthWidth, buttonHeight*0.5f);
 		renderer.setColor(Color.FIREBRICK);
 		renderer.rect(3, (buttonHeight+6) * 1.5f, domeHealthWidth, buttonHeight*0.5f);
+		renderer.setColor(Color.BLUE);
+		renderer.rect(Application.V_WIDTH*0.5f - Application.V_WIDTH *0.1f, (buttonHeight+6) * 2f, cooldownWidth, buttonHeight*0.25f);
 		
 	}
 	
-	public void update(float cityValue, float domeValue ){
+	public void update(float cityValue, float domeValue, float score, float cooldown ){
 		cityHealthWidth = (Application.V_WIDTH - 6) * cityValue;
 		domeHealthWidth = (Application.V_WIDTH - 6) * domeValue;
+		if (cooldown <= 0) {
+			cooldownWidth = 0;
+		}else{
+			cooldownWidth = Application.V_WIDTH*0.25f * cooldown;
+		}
+		
 		cityHP.setText("City HP: " +  cityValue*100 + "%");
 		domeHP.setText("Dome HP: " + domeValue*100 + "%");
+		scoreLabel.setText("Score: " + score);
+		
+		if (currentPressed == Constants.STONE) {
+			currentlySelected.setText("Rock");
+		}
+		if (currentPressed == Constants.GRANADE) {
+			currentlySelected.setText("Granade");
+		}
+		if (currentPressed == Constants.BOMB) {
+			currentlySelected.setText("Bomb");
+		}
+		if (currentPressed == Constants.MYSTERYBOX) {
+			currentlySelected.setText("MysteryBox");
+		}
+		if (currentPressed == Constants.NUKE) {
+			currentlySelected.setText("Nuke");
+		}
 	}
 	
 	public int getCurrentPressed(){
