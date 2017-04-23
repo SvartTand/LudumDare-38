@@ -25,6 +25,7 @@ public class GameOverHud {
 	
 	private Label resultLabel;
 	private Label retryLabel;
+	private Label backLabel;
 	
 	private float buttonWidth;
 	private float buttonHeight;
@@ -48,6 +49,9 @@ public class GameOverHud {
 		retryLabel = new Label("RETRY", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		retryLabel.setPosition(Application.V_WIDTH*0.5f - retryLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.15f - buttonHeight*0.3f);
 		
+		backLabel = new Label("MENU", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		backLabel.setPosition(Application.V_WIDTH*0.5f - backLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.05f - buttonHeight*0.3f);
+		
 		resultLabel = new Label("YOUR KILL COUNT WAS: " + score, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		resultLabel.setPosition(Application.V_WIDTH*0.5f - resultLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.22f - buttonHeight*0.3f);
 		
@@ -67,9 +71,18 @@ public class GameOverHud {
                 isPressed = 1;
             };
         });
+        Button button2 = new ImageButton(new TextureRegionDrawable(textures.getTextureRegion("BigButton")));
+        button2.setPosition(Application.V_WIDTH*0.5f - buttonWidth*0.5f, Application.V_HEIGHT*0.05f - buttonHeight*0.5f);
+        button2.addListener( new ClickListener() {              
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                isPressed = 2;
+            };
+        });
         
-        
+        stage.addActor(button2);
         stage.addActor(button);
+        stage.addActor(backLabel);
         stage.addActor(resultLabel);
         stage.addActor(retryLabel);
         stage.addActor(winLabel);

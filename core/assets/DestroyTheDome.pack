@@ -10,340 +10,235 @@ MainMenuBackground
   orig: 400, 400
   offset: 0, 0
   index: -1
+MainMenuScreen
+  rotate: false
+  xy: 1, 221
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
 Dome
   rotate: false
-  xy: 1, 421
+  xy: 1, 19
   size: 400, 200
   orig: 400, 200
   offset: 0, 0
   index: -1
-City1
+Dome1
   rotate: false
-  xy: 403, 823
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-City2
-  rotate: false
-  xy: 1, 219
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-City3
-  rotate: false
-  xy: 403, 621
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-CityPlaceholder
-  rotate: false
-  xy: 605, 823
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion1
-  rotate: false
-  xy: 1, 17
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion10
-  rotate: false
-  xy: 605, 621
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion11
-  rotate: false
-  xy: 807, 823
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion12
-  rotate: false
-  xy: 807, 621
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion13
-  rotate: false
-  xy: 203, 219
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion14
-  rotate: false
-  xy: 203, 17
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion2
-  rotate: false
-  xy: 405, 419
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion3
-  rotate: false
-  xy: 405, 217
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion4
-  rotate: false
-  xy: 607, 419
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion5
-  rotate: false
-  xy: 607, 217
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion6
-  rotate: false
-  xy: 405, 15
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion7
-  rotate: false
-  xy: 607, 15
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion8
-  rotate: false
-  xy: 809, 419
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-NukeExplosion9
-  rotate: false
-  xy: 809, 217
-  size: 200, 200
-  orig: 200, 200
-  offset: 0, 0
-  index: -1
-BigButton
-  rotate: false
-  xy: 809, 183
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
-BigExplosion1
-  rotate: false
-  xy: 809, 101
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-BigExplosion2
-  rotate: false
-  xy: 809, 19
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-BigExplosion3
-  rotate: false
-  xy: 891, 101
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-BigExplosion4
-  rotate: false
-  xy: 891, 19
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
-BombPlaceholder
-  rotate: false
-  xy: 939, 183
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-Explosion1
-  rotate: false
-  xy: 973, 175
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-Explosion2
-  rotate: false
-  xy: 973, 133
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-Explosion3
-  rotate: false
-  xy: 973, 91
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-Explosion4
-  rotate: false
-  xy: 973, 49
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-Explosion5
-  rotate: false
-  xy: 973, 7
-  size: 40, 40
-  orig: 40, 40
+  xy: 1, 19
+  size: 400, 200
+  orig: 400, 200
   offset: 0, 0
   index: -1
 FlyingMonster1
   rotate: false
-  xy: 809, 1
+  xy: 1, 1
   size: 24, 16
   orig: 24, 16
   offset: 0, 0
   index: -1
 FlyingMonster2
   rotate: false
-  xy: 835, 1
+  xy: 27, 1
   size: 24, 16
   orig: 24, 16
   offset: 0, 0
   index: -1
 FlyingMonster3
   rotate: false
-  xy: 861, 1
+  xy: 53, 1
   size: 24, 16
   orig: 24, 16
   offset: 0, 0
   index: -1
 FlyingMonster4
   rotate: false
-  xy: 887, 1
+  xy: 79, 1
   size: 24, 16
   orig: 24, 16
   offset: 0, 0
   index: -1
 FlyingMonster5
   rotate: false
-  xy: 913, 1
+  xy: 105, 1
   size: 24, 16
   orig: 24, 16
   offset: 0, 0
   index: -1
 FlyingMonsterR1
   rotate: false
-  xy: 939, 1
+  xy: 131, 1
+  size: 24, 16
+  orig: 24, 16
+  offset: 0, 0
+  index: -1
+FlyingMonsterR2
+  rotate: false
+  xy: 157, 1
+  size: 24, 16
+  orig: 24, 16
+  offset: 0, 0
+  index: -1
+FlyingMonsterR3
+  rotate: false
+  xy: 183, 1
+  size: 24, 16
+  orig: 24, 16
+  offset: 0, 0
+  index: -1
+FlyingMonsterR4
+  rotate: false
+  xy: 209, 1
+  size: 24, 16
+  orig: 24, 16
+  offset: 0, 0
+  index: -1
+FlyingMonsterR5
+  rotate: false
+  xy: 235, 1
   size: 24, 16
   orig: 24, 16
   offset: 0, 0
   index: -1
 SnailMob1
   rotate: false
-  xy: 1, 1
+  xy: 261, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob2
   rotate: false
-  xy: 21, 1
+  xy: 281, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob3
   rotate: false
-  xy: 41, 1
+  xy: 301, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob4
   rotate: false
-  xy: 61, 1
+  xy: 321, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMob5
   rotate: false
-  xy: 81, 1
+  xy: 341, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR1
   rotate: false
-  xy: 101, 1
+  xy: 361, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR2
   rotate: false
-  xy: 121, 1
+  xy: 381, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
 SnailMobR3
   rotate: false
-  xy: 141, 1
+  xy: 401, 3
   size: 18, 14
   orig: 18, 14
   offset: 0, 0
   index: -1
-SnailMobR4
+Dome10
   rotate: false
-  xy: 161, 1
-  size: 18, 14
-  orig: 18, 14
-  offset: 0, 0
-  index: -1
-SnailMobR5
-  rotate: false
-  xy: 181, 1
-  size: 18, 14
-  orig: 18, 14
+  xy: 421, 823
+  size: 400, 200
+  orig: 400, 200
   offset: 0, 0
   index: -1
 Granade
   rotate: false
-  xy: 1009, 1013
+  xy: 403, 1013
   size: 8, 10
   orig: 8, 10
   offset: 0, 0
   index: -1
 Particle
   rotate: false
-  xy: 965, 12
+  xy: 413, 1018
   size: 5, 5
   orig: 5, 5
+  offset: 0, 0
+  index: -1
+City1
+  rotate: false
+  xy: 823, 823
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Dome2
+  rotate: false
+  xy: 421, 621
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+City2
+  rotate: false
+  xy: 823, 621
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Dome3
+  rotate: false
+  xy: 403, 419
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+City3
+  rotate: false
+  xy: 805, 419
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+Dome4
+  rotate: false
+  xy: 403, 217
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+Dome5
+  rotate: false
+  xy: 421, 15
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+CityPlaceholder
+  rotate: false
+  xy: 805, 217
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion1
+  rotate: false
+  xy: 823, 15
+  size: 200, 200
+  orig: 200, 200
   offset: 0, 0
   index: -1
 
@@ -351,409 +246,591 @@ DestroyTheDome2.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+Dome6
+  rotate: false
+  xy: 1, 823
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+Dome7
+  rotate: false
+  xy: 1, 621
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+Dome8
+  rotate: false
+  xy: 403, 823
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+Dome9
+  rotate: false
+  xy: 1, 419
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion10
+  rotate: false
+  xy: 403, 621
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion11
+  rotate: false
+  xy: 805, 823
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion12
+  rotate: false
+  xy: 1, 217
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion13
+  rotate: false
+  xy: 403, 419
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion14
+  rotate: false
+  xy: 605, 621
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion2
+  rotate: false
+  xy: 1, 15
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion3
+  rotate: false
+  xy: 203, 217
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion4
+  rotate: false
+  xy: 605, 419
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion5
+  rotate: false
+  xy: 203, 15
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion6
+  rotate: false
+  xy: 405, 217
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion7
+  rotate: false
+  xy: 405, 15
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion8
+  rotate: false
+  xy: 807, 621
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+NukeExplosion9
+  rotate: false
+  xy: 807, 419
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+BigButton
+  rotate: false
+  xy: 607, 385
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+BigExplosion1
+  rotate: false
+  xy: 607, 303
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion2
+  rotate: false
+  xy: 607, 221
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion3
+  rotate: false
+  xy: 607, 139
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+BigExplosion4
+  rotate: false
+  xy: 607, 57
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 BigExplosion5
   rotate: false
-  xy: 1, 47
+  xy: 689, 303
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 BigExplosion6
   rotate: false
-  xy: 83, 47
+  xy: 689, 221
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 BigExplosion7
   rotate: false
-  xy: 165, 47
+  xy: 689, 139
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 BigExplosion8
   rotate: false
-  xy: 247, 47
+  xy: 689, 57
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
+BombPlaceholder
+  rotate: false
+  xy: 737, 385
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Explosion1
+  rotate: false
+  xy: 607, 15
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion2
+  rotate: false
+  xy: 771, 377
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion3
+  rotate: false
+  xy: 649, 15
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion4
+  rotate: false
+  xy: 771, 335
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+Explosion5
+  rotate: false
+  xy: 813, 377
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
 Explosion6
   rotate: false
-  xy: 1, 5
+  xy: 691, 15
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 Slime1
   rotate: false
-  xy: 329, 91
+  xy: 771, 297
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 Slime2
   rotate: false
-  xy: 43, 9
+  xy: 813, 339
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 Slime3
   rotate: false
-  xy: 329, 53
+  xy: 855, 381
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 Slime4
   rotate: false
-  xy: 367, 91
+  xy: 733, 19
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeEffect1
   rotate: false
-  xy: 81, 9
+  xy: 771, 259
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeEffect2
   rotate: false
-  xy: 367, 53
+  xy: 893, 381
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeEffect3
   rotate: false
-  xy: 405, 91
+  xy: 771, 221
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeEffect4
   rotate: false
-  xy: 119, 9
+  xy: 931, 381
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeEffect5
   rotate: false
-  xy: 405, 53
+  xy: 771, 183
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeEffect6
   rotate: false
-  xy: 443, 91
+  xy: 969, 381
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeR1
   rotate: false
-  xy: 157, 9
+  xy: 771, 145
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeR2
   rotate: false
-  xy: 443, 53
+  xy: 771, 107
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeR3
   rotate: false
-  xy: 481, 91
+  xy: 771, 69
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 SlimeR4
   rotate: false
-  xy: 195, 9
+  xy: 771, 31
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
+FlyingMonsterEffect1
+  rotate: false
+  xy: 771, 5
+  size: 30, 24
+  orig: 30, 24
+  offset: 0, 0
+  index: -1
 Button
   rotate: false
-  xy: 481, 57
+  xy: 809, 301
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button0
   rotate: false
-  xy: 519, 95
+  xy: 809, 267
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button0Pressed
   rotate: false
-  xy: 233, 13
+  xy: 809, 233
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button1
   rotate: false
-  xy: 553, 95
+  xy: 809, 199
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button1Pressed
   rotate: false
-  xy: 267, 13
+  xy: 809, 165
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button2
   rotate: false
-  xy: 587, 95
+  xy: 809, 131
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button2Pressed
   rotate: false
-  xy: 621, 95
+  xy: 809, 97
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button3
   rotate: false
-  xy: 655, 95
+  xy: 809, 63
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button3Pressed
   rotate: false
-  xy: 689, 95
+  xy: 809, 29
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+FlyingMonsterEffect2
+  rotate: false
+  xy: 803, 3
+  size: 30, 24
+  orig: 30, 24
+  offset: 0, 0
+  index: -1
 Button4
   rotate: false
-  xy: 723, 95
+  xy: 851, 343
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Button4Pressed
   rotate: false
-  xy: 757, 95
+  xy: 885, 347
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 ButtonPressed
   rotate: false
-  xy: 791, 95
+  xy: 919, 347
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 MobPlaceholder
   rotate: false
-  xy: 825, 95
+  xy: 953, 347
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 Nuke
   rotate: false
-  xy: 859, 95
+  xy: 987, 347
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 RockExplosion1
   rotate: false
-  xy: 893, 95
+  xy: 843, 305
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 RockExplosion2
   rotate: false
-  xy: 927, 95
+  xy: 843, 271
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 RockExplosion3
   rotate: false
-  xy: 961, 95
+  xy: 843, 237
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 RockExplosion4
   rotate: false
-  xy: 301, 13
+  xy: 843, 203
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 RockExplosion5
   rotate: false
-  xy: 335, 19
+  xy: 843, 169
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-FlyingMonsterEffect1
-  rotate: false
-  xy: 369, 27
-  size: 30, 24
-  orig: 30, 24
-  offset: 0, 0
-  index: -1
-FlyingMonsterEffect2
-  rotate: false
-  xy: 369, 1
-  size: 30, 24
-  orig: 30, 24
-  offset: 0, 0
-  index: -1
 FlyingMonsterEffect3
   rotate: false
-  xy: 401, 27
+  xy: 843, 143
   size: 30, 24
   orig: 30, 24
   offset: 0, 0
   index: -1
 FlyingMonsterEffect4
   rotate: false
-  xy: 401, 1
+  xy: 843, 117
   size: 30, 24
   orig: 30, 24
   offset: 0, 0
   index: -1
 FlyingMonsterEffect5
   rotate: false
-  xy: 433, 27
+  xy: 843, 91
   size: 30, 24
   orig: 30, 24
   offset: 0, 0
   index: -1
 FlyingMonsterEffect6
   rotate: false
-  xy: 433, 1
+  xy: 843, 65
   size: 30, 24
   orig: 30, 24
-  offset: 0, 0
-  index: -1
-FlyingMonsterR2
-  rotate: false
-  xy: 335, 1
-  size: 24, 16
-  orig: 24, 16
-  offset: 0, 0
-  index: -1
-Bomb
-  rotate: false
-  xy: 995, 107
-  size: 24, 20
-  orig: 24, 20
   offset: 0, 0
   index: -1
 FlyingMonsterEffect7
   rotate: false
-  xy: 465, 27
+  xy: 843, 39
   size: 30, 24
   orig: 30, 24
   offset: 0, 0
   index: -1
+Bomb
+  rotate: false
+  xy: 843, 17
+  size: 24, 20
+  orig: 24, 20
+  offset: 0, 0
+  index: -1
+SnailMobR4
+  rotate: false
+  xy: 835, 1
+  size: 18, 14
+  orig: 18, 14
+  offset: 0, 0
+  index: -1
+SnailMobR5
+  rotate: false
+  xy: 855, 1
+  size: 18, 14
+  orig: 18, 14
+  offset: 0, 0
+  index: -1
+Rock
+  rotate: false
+  xy: 869, 17
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
 MysteryBox
   rotate: false
-  xy: 465, 3
+  xy: 885, 323
   size: 22, 22
   orig: 22, 22
   offset: 0, 0
   index: -1
-FlyingMonsterR3
-  rotate: false
-  xy: 995, 89
-  size: 24, 16
-  orig: 24, 16
-  offset: 0, 0
-  index: -1
 SnailMobEffect1
   rotate: false
-  xy: 497, 33
+  xy: 909, 323
   size: 22, 22
   orig: 22, 22
   offset: 0, 0
   index: -1
 SnailMobEffect2
   rotate: false
-  xy: 489, 3
+  xy: 933, 323
   size: 22, 22
   orig: 22, 22
   offset: 0, 0
   index: -1
-FlyingMonsterR4
-  rotate: false
-  xy: 519, 77
-  size: 24, 16
-  orig: 24, 16
-  offset: 0, 0
-  index: -1
-FlyingMonsterR5
-  rotate: false
-  xy: 545, 77
-  size: 24, 16
-  orig: 24, 16
-  offset: 0, 0
-  index: -1
 SnailMobEffect3
   rotate: false
-  xy: 571, 71
+  xy: 957, 323
   size: 22, 22
   orig: 22, 22
   offset: 0, 0
   index: -1
 SnailMobEffect4
   rotate: false
-  xy: 595, 71
+  xy: 981, 323
   size: 22, 22
   orig: 22, 22
   offset: 0, 0
   index: -1
 SnailMobEffect5
   rotate: false
-  xy: 619, 71
+  xy: 877, 299
   size: 22, 22
   orig: 22, 22
   offset: 0, 0
   index: -1
 SnailMobEffect6
   rotate: false
-  xy: 643, 71
+  xy: 901, 299
   size: 22, 22
   orig: 22, 22
-  offset: 0, 0
-  index: -1
-Rock
-  rotate: false
-  xy: 667, 73
-  size: 20, 20
-  orig: 20, 20
   offset: 0, 0
   index: -1

@@ -3,10 +3,7 @@ package com.svarttand.game.huds;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -19,15 +16,14 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
 import com.svarttand.game.misc.Textures;
 
-
-public class MenuHud {
+public class HelpHud {
 	
-	private Camera camera;
 	private Viewport viewport;
 	public Stage stage;
 	
-	private Label playLabel;
-	private Label helpLabel;
+	private Label backLabel;
+	private Label objectiveLabel;
+	private Label keyLabel;
 	
 	
 	private int isPressed;
@@ -35,8 +31,7 @@ public class MenuHud {
 	private float buttonWidth;
 	private float buttonHeight;
 	
-	public MenuHud(Camera camera){
-		this.camera = camera;
+	public HelpHud(Camera camera){
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT,camera);
 		isPressed = 0;
 	}
@@ -48,14 +43,16 @@ public class MenuHud {
 		buttonHeight = textures.getTextureRegion("BigButton").getRegionHeight();
 		buttonWidth = textures.getTextureRegion("BigButton").getRegionWidth();
 		
-		playLabel = new Label("PLAY", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        playLabel.setPosition(Application.V_WIDTH*0.5f - playLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.20f - buttonHeight*0.3f);
+		backLabel = new Label("BACK", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        backLabel.setPosition(Application.V_WIDTH*0.5f - backLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.80f - buttonHeight*0.3f);
         
-        helpLabel = new Label("HELP", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        helpLabel.setPosition(Application.V_WIDTH*0.5f - helpLabel.getWidth()*0.5f,  Application.V_HEIGHT*0.10f - buttonHeight*0.3f);
+        objectiveLabel = new Label("Objective:\nDestroy the dome\nbefore the evil ailiens\ndestroy your city", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        objectiveLabel.setPosition(30,   Application.V_HEIGHT*0.08f);
+        
+        
         
 		Button button = new ImageButton(new TextureRegionDrawable(textures.getTextureRegion("BigButton")));
-        button.setPosition(Application.V_WIDTH*0.5f - buttonWidth*0.5f, Application.V_HEIGHT*0.20f - buttonHeight*0.5f);
+        button.setPosition(Application.V_WIDTH*0.5f - buttonWidth*0.5f, Application.V_HEIGHT*0.80f - buttonHeight*0.5f);
         button.addListener( new ClickListener() {              
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -65,17 +62,12 @@ public class MenuHud {
         
         stage.addActor(button);
         
-        Button button2 = new ImageButton(new TextureRegionDrawable(textures.getTextureRegion("BigButton")));
-        button2.setPosition(Application.V_WIDTH*0.5f - buttonWidth*0.5f, Application.V_HEIGHT*0.10f - buttonHeight*0.5f);
-        button2.addListener( new ClickListener() {              
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                isPressed = 2;
-            };
-        });
-        stage.addActor(button2);
-        stage.addActor(playLabel);
-        stage.addActor(helpLabel);
+        keyLabel = new Label("Keys you can use:\nSPACE, detonates\nthe bomb instantly\nESC, Go back to the Menu", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        keyLabel.setPosition(Application.V_WIDTH*0.5f ,   Application.V_HEIGHT*0.08f);
+     
+        stage.addActor(backLabel);
+        stage.addActor(objectiveLabel);
+        stage.addActor(keyLabel);
         Gdx.input.setInputProcessor(stage);
         
 	}
@@ -90,6 +82,5 @@ public class MenuHud {
 	public void dispose(){
 		stage.dispose();
 	}
-
 
 }

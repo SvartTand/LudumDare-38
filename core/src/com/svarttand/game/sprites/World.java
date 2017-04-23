@@ -7,7 +7,7 @@ import com.svarttand.game.misc.Textures;
 
 public class World{
 	
-	private static final int MAX_HP = 1000; 
+	private static final int MAX_HP = 500; 
 	private String imageName;
 	private float hitPoints;
 	private Circle bounds;

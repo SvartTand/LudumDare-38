@@ -22,12 +22,14 @@ public class InvaderSpawner {
 	private ArrayList<Explosion> explosions;
 	private Textures textures;
 	private int score;
+	private float freqency;
 
 	
 	public InvaderSpawner(){
 		invaders = new ArrayList<Invader>();
 		random = new Random();
-		counter = Constants.SPAWN_FREQENCY;
+		freqency = 4;
+		counter = freqency;
 		explosions = new ArrayList<Explosion>();
 		score = 0;
 	}
@@ -44,7 +46,7 @@ public class InvaderSpawner {
 			}else{
 				invaders.add(new Invader(direction, Application.V_WIDTH + 20, 100,textures, type));
 			}
-			counter = Constants.SPAWN_FREQENCY;
+			counter = freqency;
 		}
 		for (int i = 0; i < invaders.size(); i++) {
 			invaders.get(i).update(delta, world);
@@ -81,9 +83,12 @@ public class InvaderSpawner {
 	public void explosion(Circle blast, int dmg, float force){
 		for (int i = 0; i < invaders.size(); i++) {
 			if (blast.overlaps(invaders.get(i).getBounds())) {
-				float distanceX = Math.abs((blast.x + blast.radius) - (invaders.get(i).getBounds().x + invaders.get(i).getBounds().radius));
-				float distanceY = Math.abs((blast.y+ blast.radius) - (invaders.get(i).getBounds().y + invaders.get(i).getBounds().radius));		
-				invaders.get(i).hit(dmg, distanceX*force, distanceY*force);
+				
+				float distanceX = ((blast.x) - (invaders.get(i).getBounds().x));
+				float distanceY = Math.abs((blast.y+ blast.radius) - (invaders.get(i).getBounds().y + invaders.get(i).getBounds().radius));
+				invaders.get(i).hit(dmg, -distanceX*force, distanceY*force);
+				
+				
 			}
 		}
 	}
@@ -109,6 +114,10 @@ public class InvaderSpawner {
 	
 	public int getScore(){
 		return score;
+	}
+	
+	public void setFrequency(float freqency){
+		this.freqency = freqency;
 	}
 
 }

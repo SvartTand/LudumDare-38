@@ -54,7 +54,7 @@ public class Weapon implements Weapons{
 		this.list = list;
 		this.invaders = invaders;
 		this.dome = dome;
-		force = 0.1f;
+		force = 0.05f;
 		this.textures = textures;
 		
 		

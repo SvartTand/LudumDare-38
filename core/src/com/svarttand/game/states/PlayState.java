@@ -42,7 +42,7 @@ public class PlayState extends State{
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
-		background = textures.getTextureRegion("MainMenuBackground");
+		background = textures.getTextureRegion("MainMenuScreen");
 		world = new World(textures);
 		dome = new Dome();
 		hud = new PlayHud(cam);
@@ -100,6 +100,10 @@ public class PlayState extends State{
 		if (Gdx.input.isKeyJustPressed(Keys.SPACE) && weapons.size() > 0 && !weapons.get(weapons.size()-1).getTextureName().equals("Rock")) {
 			weapons.get(weapons.size()-1).detonate();;
 		}
+		if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
+			gsm.set(new MenuState(gsm));
+		}
+		
 		
 	}
 			
@@ -110,7 +114,7 @@ public class PlayState extends State{
 		handleInput(delta);
 		mouse.set(((float)Gdx.input.getX()/Gdx.graphics.getWidth())* Application.V_WIDTH,Application.V_HEIGHT - ((float)Gdx.input.getY()/Gdx.graphics.getHeight())*Application.V_HEIGHT);
 		world.update(delta);
-		dome.update(delta);
+		dome.update(delta,invaders);
 		if (world.getHitPoints()<= 0) {
 			gsm.set(new GameOverState(gsm, invaders.getScore(),false));
 		}

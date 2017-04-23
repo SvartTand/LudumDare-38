@@ -20,7 +20,7 @@ public class GameOverState extends State{
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
 		hud = new GameOverHud(cam, score);
 		hud.initialize(textures, win);
-		background = textures.getTextureRegion("MainMenuBackground");
+		background = textures.getTextureRegion("MainMenuScreen");
 		this.win = win;
 	}
 
@@ -28,6 +28,9 @@ public class GameOverState extends State{
 	protected void handleInput(float delta) {
 		if (hud.getButtonPressed() == 1) {
 			gsm.set(new PlayState(gsm));
+		}
+		if (hud.getButtonPressed() == 2) {
+			gsm.set(new MenuState(gsm));
 		}
 		
 	}
@@ -44,6 +47,7 @@ public class GameOverState extends State{
 		batch.begin();
 		batch.draw(background,0,0);
 		if (!win) {
+			batch.draw(textures.getTextureRegion("Dome1"),0,Application.V_HEIGHT*0.5f);
 			batch.draw(textures.getTextureRegion("City3"),Application.V_WIDTH*0.5f - textures.getTextureRegion("City3").getRegionWidth()*0.5f, Application.V_HEIGHT/4-9);
 		}
 		batch.end();

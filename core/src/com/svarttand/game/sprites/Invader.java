@@ -47,7 +47,7 @@ public class Invader implements Disposable{
 			name = "SnailMob";
 			dmg = 20;
 			speed = 0.5f;
-			maxHP = 20;
+			maxHP = 15;
 			hitpoints = maxHP;
 			ground = Application.V_HEIGHT*0.25f;
 			this.direction = direction;
@@ -63,7 +63,7 @@ public class Invader implements Disposable{
 			name = "Slime";
 			dmg = 10;
 			speed = 0.2f;
-			maxHP = 150;
+			maxHP = 75;
 			hitpoints = maxHP;
 			ground = Application.V_HEIGHT*0.25f;
 			this.direction = direction;
@@ -79,7 +79,7 @@ public class Invader implements Disposable{
 			name = "FlyingMonster";
 			dmg = 5;
 			speed = 0.7f;
-			maxHP = 7;
+			maxHP = 5;
 			hitpoints = maxHP;
 			ground = Application.V_HEIGHT*0.5f;
 			this.direction = direction;
@@ -122,14 +122,14 @@ public class Invader implements Disposable{
 		animation.update(delta);
 		if (direction) {
 			if (velocity.x >= speed) {
-				velocity.x = speed;
+				velocity.add(-speed*delta, 0);
 			}else{
 				velocity.add(speed*delta,0);
 			}
 			
 		}else{
 			if (velocity.x <= -speed) {
-				velocity.x = -speed;
+				velocity.add(speed* delta, 0);
 			}else{
 				velocity.add(-speed*delta,0);
 			}

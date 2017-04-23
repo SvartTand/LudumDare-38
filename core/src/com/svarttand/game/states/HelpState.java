@@ -5,18 +5,18 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.svarttand.game.Application;
-import com.svarttand.game.huds.MenuHud;
+import com.svarttand.game.huds.HelpHud;
 
-public class MenuState extends State{
-
+public class HelpState extends State{
+	
 	private Viewport viewport;
-	private MenuHud hud;
+	private HelpHud hud;
 	private TextureRegion background;
 	
-	public MenuState(GameStateManager gsm) {
+	public HelpState(GameStateManager gsm) {
 		super(gsm);
 		viewport = new StretchViewport(Application.V_WIDTH, Application.V_HEIGHT, cam);
-		hud = new MenuHud(cam);
+		hud = new HelpHud(cam);
 		background = textures.getTextureRegion("MainMenuScreen");
 		hud.initialize(textures);
 	}
@@ -24,11 +24,9 @@ public class MenuState extends State{
 	@Override
 	protected void handleInput(float delta) {
 		if (hud.isPressed() == 1) {
-			gsm.set(new PlayState(gsm));
+			gsm.set(new MenuState(gsm));
 		}
-		if (hud.isPressed() == 2) {
-			gsm.set(new HelpState(gsm));
-		}
+		
 		
 	}
 
@@ -61,8 +59,5 @@ public class MenuState extends State{
 		hud.getViewport().update(width, height);
 		
 	}
-
-	
-	
 
 }
